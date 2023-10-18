@@ -135,15 +135,29 @@ void generateBoard(Board *board)
 }
 
 // Tablero a string
-void boardToString(Board *board, char *str)
+// void boardToString(Board *board, char *str)
+// {
+//     char *aux = str;
+//     for (int i = 0; i < BOARD_SIZE; i++)
+//     {
+//         for (int j = 0; j < BOARD_SIZE; j++, aux++)
+//         {
+//             *aux = board->grid[i][j];
+//         }
+//     }
+//     *aux = '\0';
+// }
+
+void boardToString(Board *board, char *output)
 {
-    char *aux = str;
+    int index = 0;
     for (int i = 0; i < BOARD_SIZE; i++)
     {
-        for (int j = 0; j < BOARD_SIZE; j++, aux++)
+        for (int j = 0; j < BOARD_SIZE; j++)
         {
-            *aux = board->grid[i][j];
+            output[index] = board->grid[i][j];
+            index++;
         }
     }
-    *aux = '\0';
+    output[index] = '\0'; // Agrega un carácter nulo al final de la cadena
 }
