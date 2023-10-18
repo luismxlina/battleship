@@ -1,4 +1,5 @@
 #include "../board.h"
+#include "../auth.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -7,6 +8,8 @@ int main()
 {
     srand(time(NULL));
     Board playerBoard;
+
+    auth();
 
     generateBoard(&playerBoard);
 
