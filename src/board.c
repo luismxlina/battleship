@@ -1,30 +1,8 @@
-#include <stdbool.h>
+// Descripción: Funciones para manejar el tablero de juego.
+#include "board.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-
-#define BOARD_SIZE 10
-#define NUM_SHIPS 5
-#define HORIZONTAL 'H'
-#define VERTICAL 'V'
-#define EMPTY 'A'
-#define SHIP 'B'
-#define HIT 'X'
-#define MISS 'O'
-
-// Estructura para un barco
-typedef struct
-{
-    int size;
-    char orientation; // 'H' para horizontal, 'V' para vertical
-    int x, y;         // Coordenadas del extremo superior izquierdo del barco
-} Ship;
-
-// Estructura para el tablero
-typedef struct
-{
-    char grid[BOARD_SIZE][BOARD_SIZE]; // Matriz de caracteres para representar el tablero
-} Board;
+#include <string.h>
 
 // Inicializa el tablero con celdas vacías
 void initializeBoard(Board *board)
@@ -123,11 +101,9 @@ int getRandom(int min, int max)
     return rand() % (max - min + 1) + min;
 }
 
-int main()
+void generateBoard(Board *board)
 {
-    srand(time(NULL));
-    Board playerBoard;
-    initializeBoard(&playerBoard);
+    initializeBoard(board);
 
     // Número y tamaño de los barcos
     int shipSizes[] = {4, 3, 3, 2, 2};
@@ -153,12 +129,21 @@ int main()
                 ship.y = getRandom(0, BOARD_SIZE - ship.size);
             }
 
-            placed = placeShip(&playerBoard, ship);
+            placed = placeShip(board, ship);
         }
     }
+}
 
-    printf("Tablero del Jugador:\n");
-    printBoard(&playerBoard);
-
-    return 0;
+// Tablero a string
+void boardToString(Board *board, char *str)
+{
+    char *aux = str;
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; j < BOARD_SIZE; j++, aux++)
+        {
+            *aux = board->grid[i][j];
+        }
+    }
+    *aux = '\0';
 }
