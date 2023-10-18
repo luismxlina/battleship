@@ -134,20 +134,6 @@ void generateBoard(Board *board)
     }
 }
 
-// Tablero a string
-// void boardToString(Board *board, char *str)
-// {
-//     char *aux = str;
-//     for (int i = 0; i < BOARD_SIZE; i++)
-//     {
-//         for (int j = 0; j < BOARD_SIZE; j++, aux++)
-//         {
-//             *aux = board->grid[i][j];
-//         }
-//     }
-//     *aux = '\0';
-// }
-
 void boardToString(Board *board, char *output)
 {
     int index = 0;
