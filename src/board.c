@@ -1,12 +1,14 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 #define BOARD_SIZE 10
+#define NUM_SHIPS 5
 #define HORIZONTAL 'H'
 #define VERTICAL 'V'
-#define EMPTY ' '
-#define SHIP 'S'
+#define EMPTY 'A'
+#define SHIP 'B'
 #define HIT 'X'
 #define MISS 'O'
 
@@ -36,32 +38,44 @@ void initializeBoard(Board *board)
     }
 }
 
-void placeShip(Board *board, Ship ship)
+bool placeShip(Board *board, Ship ship)
 {
-    // Verifica que el barco quepa en el tablero en la posición y orientación especificadas
+    // Verifica que el barco quepa en la posición y orientación especificadas
     if (ship.x < 0 || ship.x >= BOARD_SIZE || ship.y < 0 || ship.y >= BOARD_SIZE)
     {
-        printf("Posición fuera del tablero. No se puede colocar el barco.\n");
-        return;
+        return false; // Devuelve falso si la posición está fuera del tablero
     }
 
-    // Verifica que no haya otros barcos en las casillas donde se coloca el barco
+    // Verifica si hay otros barcos ocupando las casillas donde se coloca el barco
     for (int i = 0; i < ship.size; i++)
     {
         if (ship.orientation == HORIZONTAL)
         {
             if (board->grid[ship.y][ship.x + i] == SHIP)
             {
-                printf("Barco en conflicto con otro barco. No se puede colocar.\n");
-                return;
+                return false; // Devuelve falso si hay conflicto con otro barco
             }
         }
         else
         {
             if (board->grid[ship.y + i][ship.x] == SHIP)
             {
-                printf("Barco en conflicto con otro barco. No se puede colocar.\n");
-                return;
+                return false; // Devuelve falso si hay conflicto con otro barco
+            }
+        }
+    }
+
+    // Verifica si hay barcos adyacentes
+    for (int i = ship.y - 1; i <= ship.y + ship.size; i++)
+    {
+        for (int j = ship.x - 1; j <= ship.x + ship.size; j++)
+        {
+            if (i >= 0 && i < BOARD_SIZE && j >= 0 && j < BOARD_SIZE)
+            {
+                if (board->grid[i][j] == SHIP)
+                {
+                    return false; // Devuelve falso si hay un barco adyacente
+                }
             }
         }
     }
@@ -78,11 +92,13 @@ void placeShip(Board *board, Ship ship)
             board->grid[ship.y + i][ship.x] = SHIP;
         }
     }
+
+    return true; // Devuelve true si el barco se colocó con éxito
 }
 
 // Imprime el tablero
 void printBoard(Board *board)
-{   
+{
     printf(" ");
     for (int i = 0; i < BOARD_SIZE; i++)
     {
@@ -101,24 +117,48 @@ void printBoard(Board *board)
     }
 }
 
+// Función para generar un valor pseudoaleatorio entre min y max (ambos inclusive)
+int getRandom(int min, int max)
+{
+    return rand() % (max - min + 1) + min;
+}
+
 int main()
 {
     srand(time(NULL));
     Board playerBoard;
     initializeBoard(&playerBoard);
 
-    // Aquí puedes crear e inicializar los barcos y colocarlos en el tablero
-    Ship ship1 = {3, HORIZONTAL, 0, 0};
-    Ship ship2 = {4, VERTICAL, 5, 5};
-    Ship ship3 = {5, HORIZONTAL, 7, 2};
-    placeShip(&playerBoard, ship1);
-    placeShip(&playerBoard, ship2);
-    placeShip(&playerBoard, ship3);
+    // Número y tamaño de los barcos
+    int shipSizes[] = {4, 3, 3, 2, 2};
+
+    // Genera y coloca barcos pseudoaleatoriamente
+    for (int i = 0; i < NUM_SHIPS; i++)
+    {
+        Ship ship;
+        ship.size = shipSizes[i];
+        ship.orientation = (getRandom(0, 1) == 0) ? HORIZONTAL : VERTICAL; // 0 para horizontal, 1 para vertical
+
+        bool placed = false;
+        while (!placed)
+        {
+            if (ship.orientation == HORIZONTAL)
+            {
+                ship.x = getRandom(0, BOARD_SIZE - ship.size);
+                ship.y = getRandom(0, BOARD_SIZE - 1);
+            }
+            else
+            {
+                ship.x = getRandom(0, BOARD_SIZE - 1);
+                ship.y = getRandom(0, BOARD_SIZE - ship.size);
+            }
+
+            placed = placeShip(&playerBoard, ship);
+        }
+    }
 
     printf("Tablero del Jugador:\n");
     printBoard(&playerBoard);
-
-    // Puedes continuar con la lógica del juego aquí
 
     return 0;
 }
