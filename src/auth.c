@@ -75,7 +75,7 @@ void auth() {
 
   if (file == NULL) {
     perror("Error al abrir el archivo de usuarios");
-    return 1;
+    return;
   }
 
   int opcion;
