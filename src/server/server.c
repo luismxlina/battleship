@@ -1,107 +1,98 @@
+#include "serverUtils.h"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-/*
- * El servidor lee y muestra por pantalla la cadena que le manda el cliente hasta que recibe FIN.
- */
-
 int main()
 {
+    int serverSocket, clientSocket;
+    struct sockaddr_in serverAddr, clientAddr;
+    socklen_t addrSize = sizeof(struct sockaddr_in);
+    fd_set readfds, auxfds;
+    char buffer[MSG_SIZE];
 
-    /*----------------------------------------------------
-        Descriptor del socket y buffer de datos
-    -----------------------------------------------------*/
-    int sd, new_sd;
-    struct sockaddr_in sockname, from;
-    char buffer[100];
-    socklen_t from_len;
-    int salir = 0;
-
-    /* --------------------------------------------------
-        Se abre el socket
-    ---------------------------------------------------*/
-    sd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sd == -1)
+    // Crear el socket del servidor
+    serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if (serverSocket < 0)
     {
-        perror("No se puede abrir el socket cliente\n");
-        exit(1);
+        perror("Error al crear el socket del servidor");
+        exit(EXIT_FAILURE);
     }
 
-    sockname.sin_family = AF_INET;
-    sockname.sin_port = htons(2000);
-    sockname.sin_addr.s_addr = INADDR_ANY;
+    // Configurar la dirección del servidor
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_addr.s_addr = INADDR_ANY;
+    serverAddr.sin_port = htons(PORT);
 
-    if (bind(sd, (struct sockaddr *)&sockname, sizeof(sockname)) == -1)
+    // Vincular el socket a la dirección del servidor
+    if (bind(serverSocket, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
     {
-        perror("Error en la operación bind");
-        exit(1);
+        perror("Error al vincular el socket a la dirección del servidor");
+        exit(EXIT_FAILURE);
     }
 
-    /*---------------------------------------------------------------------
-        Del las peticiones que vamos a aceptar sólo necesitamos el
-        tamaño de su estructura, el resto de información (familia, puerto,
-        ip), nos la proporcionará el método que recibe las peticiones.
-    ----------------------------------------------------------------------*/
-    from_len = sizeof(from);
-
-    if (listen(sd, 1) == -1)
+    // Escuchar conexiones entrantes
+    if (listen(serverSocket, 2) == 0)
+        printf("Escuchando...\n");
+    else
     {
-        perror("Error en la operación de listen");
-        exit(1);
+        perror("Error al escuchar conexiones entrantes");
+        exit(EXIT_FAILURE);
     }
 
-    /*-----------------------------------------------------------------------
-        El servidor acepta una petición
-    ------------------------------------------------------------------------ */
-    while (1)
-    {
+    FD_ZERO(&readfds);
+    FD_ZERO(&auxfds);
+    FD_SET(serverSocket, &readfds);
+    FD_SET(0, &readfds);
 
-        // Aceptar una conexión entrante
-        if ((new_sd = accept(sd, (struct sockaddr *)&from, &from_len)) == -1)
+    // Inicializar las partidas y otros datos necesarios
+    while (true)
+    {
+        // Aceptar conexiones de clientes
+        if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &addrSize)) < 0)
         {
-            perror("Error aceptando peticiones");
+            perror("Error al aceptar la conexión del cliente");
+            exit(EXIT_FAILURE);
+        }
+
+        // Inicializar un nuevo cliente
+        Client newClient = initializeClient(clientSocket);
+        bzero(buffer, sizeof(buffer));
+        // strcpy(buffer, "Bienvenido a Battleship Online\n");
+        const char *bannerFile = "battleship.txt";
+        char *banner = readFile(bannerFile);
+        if (banner == NULL)
+        {
+            perror("Error al leer el archivo del banner");
+            free(banner);
+            exit(EXIT_FAILURE);
+        }
+        strcpy(buffer, banner);
+        if (send(clientSocket, buffer, sizeof(buffer), 0) == -1)
+        {
+            perror("Error en la operación de send");
             exit(1);
         }
 
-        printf("Cliente conectado desde %s:%d\n", inet_ntoa(from.sin_addr), ntohs(from.sin_port));
+        // Lógica de autenticación y emparejamiento de clientes
 
-        do
-        {
-            salir = 0;
-            // Recibir datos del cliente
-            bzero(buffer, sizeof(buffer));
-            if (recv(new_sd, buffer, sizeof(buffer), 0) == -1)
-            {
-                perror("Error en la operación de recv");
-                exit(1);
-            }
+        // Crear y gestionar una nueva partida
+        // ...
 
-            if (strcmp(buffer, "FIN") == 0)
-                salir = 1;
-
-            printf("Fin de la conexión\n");
-
-            // Enviar respuesta al cliente
-            bzero(buffer, sizeof(buffer));
-            strcpy(buffer, "Ok. Mensaje recibido");
-            if (send(new_sd, buffer, sizeof(buffer), 0) == -1)
-            {
-                perror("Error en la operación de send");
-                exit(1);
-            }
-
-        } while (!salir);
-
-        close(new_sd);
+        // Cerrar el socket del cliente una vez que la partida haya terminado
+        close(clientSocket);
     }
 
-    close(sd);
+    // Cerrar el socket del servidor
+    close(serverSocket);
+
     return 0;
 }

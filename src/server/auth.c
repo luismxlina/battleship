@@ -18,7 +18,7 @@ typedef struct
 } User;
 
 // Función para generar una contraseña hash utilizando SHA-256 y salting
-void hash_password(const char *password, unsigned char *salt,
+void hashPassword(const char *password, unsigned char *salt,
                    unsigned char *hash)
 {
     SHA256_CTX sha256;
@@ -29,7 +29,7 @@ void hash_password(const char *password, unsigned char *salt,
 }
 
 // Función para crear un nuevo usuario y almacenarlo en un archivo
-void crear_usuario(FILE *file, const char *username, const char *password)
+void createUser(FILE *file, const char *username, const char *password)
 {
     User user;
     strncpy(user.username, username, MAX_USERNAME_LENGTH);
@@ -38,13 +38,13 @@ void crear_usuario(FILE *file, const char *username, const char *password)
     RAND_bytes(user.salt, SALT_LENGTH);
 
     // Calcular el hash de la contraseña y almacenarlo en user.password_hash
-    hash_password(password, user.salt, user.password_hash);
+    hashPassword(password, user.salt, user.password_hash);
 
     // Escribir el usuario en el archivo
     fwrite(&user, sizeof(User), 1, file);
 }
 
-int buscar_usuario(FILE *file, const char *username)
+int findUser(FILE *file, const char *username)
 {
     User user;
     rewind(file); // Reiniciar el puntero de archivo al principio
@@ -60,7 +60,7 @@ int buscar_usuario(FILE *file, const char *username)
 }
 
 // Función para verificar las credenciales del usuario
-int verificar_credenciales(FILE *file, const char *username,
+int checkCredentials(FILE *file, const char *username,
                            const char *password)
 {
     User user;
@@ -69,7 +69,7 @@ int verificar_credenciales(FILE *file, const char *username,
         if (strcmp(user.username, username) == 0)
         {
             unsigned char test_hash[SHA256_DIGEST_LENGTH];
-            hash_password(password, user.salt, test_hash);
+            hashPassword(password, user.salt, test_hash);
 
             if (memcmp(user.password_hash, test_hash, SHA256_DIGEST_LENGTH) == 0)
             {
@@ -101,14 +101,14 @@ void auth()
     {
         printf("Nombre de usuario: ");
         scanf("%s", username);
-        if (buscar_usuario(file, username))
+        if (findUser(file, username))
         {
             printf("El nombre de usuario ya existe.\n");
         }
         else
         {
             char *password = getpass("Contraseña: ");
-            crear_usuario(file, username, password);
+            createUser(file, username, password);
             printf("Usuario creado con éxito.\n");
         }
     }
@@ -118,7 +118,7 @@ void auth()
         scanf("%s", username);
         char *password = getpass("Contraseña: ");
 
-        if (verificar_credenciales(file, username, password))
+        if (checkCredenciales(file, username, password))
         {
             printf("Inicio de sesión exitoso.\n");
         }
