@@ -1,0 +1,1626 @@
+En el fichero incluido desde server.c:1:
+serverUtils.h:12:24: error: el campo ‘address’ tiene tipo de dato incompleto
+   12 |     struct sockaddr_in address;
+      |                        ^~~~~~~
+En el fichero incluido desde /usr/include/netinet/in.h:22,
+                 desde /usr/include/arpa/inet.h:22,
+                 desde server.c:2:
+/usr/include/bits/stdint-uintn.h: En la función ‘signalHandler’:
+/usr/include/bits/stdint-uintn.h:24:19: error: se especificó una clase de almacenamiento para el parámetro ‘uint8_t’
+   24 | typedef __uint8_t uint8_t;
+      |                   ^~~~~~~
+/usr/include/bits/stdint-uintn.h:25:20: error: se especificó una clase de almacenamiento para el parámetro ‘uint16_t’
+   25 | typedef __uint16_t uint16_t;
+      |                    ^~~~~~~~
+/usr/include/bits/stdint-uintn.h:26:20: error: se especificó una clase de almacenamiento para el parámetro ‘uint32_t’
+   26 | typedef __uint32_t uint32_t;
+      |                    ^~~~~~~~
+/usr/include/bits/stdint-uintn.h:27:20: error: se especificó una clase de almacenamiento para el parámetro ‘uint64_t’
+   27 | typedef __uint64_t uint64_t;
+      |                    ^~~~~~~~
+En el fichero incluido desde /usr/include/sys/socket.h:33,
+                 desde /usr/include/netinet/in.h:23:
+/usr/include/bits/socket.h:33:21: error: se especificó una clase de almacenamiento para el parámetro ‘socklen_t’
+   33 | typedef __socklen_t socklen_t;
+      |                     ^~~~~~~~~
+En el fichero incluido desde /usr/include/bits/socket.h:180:
+/usr/include/bits/sockaddr.h:28:28: error: se especificó una clase de almacenamiento para el parámetro ‘sa_family_t’
+   28 | typedef unsigned short int sa_family_t;
+      |                            ^~~~~~~~~~~
+/usr/include/bits/socket.h:185:5: error: expected specifier-qualifier-list before ‘sa_family_t’
+  185 |     __SOCKADDR_COMMON (sa_);    /* Common data: address family and length.  */
+      |     ^~~~~~~~~~~~~~~~~
+/usr/include/bits/socket.h:198:5: error: expected specifier-qualifier-list before ‘sa_family_t’
+  198 |     __SOCKADDR_COMMON (ss_);    /* Address family, etc.  */
+      |     ^~~~~~~~~~~~~~~~~
+/usr/include/bits/socket.h:265:5: error: expected specifier-qualifier-list before ‘socklen_t’
+  265 |     socklen_t msg_namelen;      /* Length of address data.  */
+      |     ^~~~~~~~~
+/usr/include/bits/socket.h:316:24: error: se especificó una clase de almacenamiento para el parámetro ‘__cmsg_nxthdr’
+  316 | extern struct cmsghdr *__cmsg_nxthdr (struct msghdr *__mhdr,
+      |                        ^~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/asm-generic/socket.h:5,
+                 desde /usr/include/asm/socket.h:1,
+                 desde /usr/include/bits/socket.h:385:
+/usr/include/linux/posix_types.h:27:3: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_fd_set’
+   27 | } __kernel_fd_set;
+      |   ^~~~~~~~~~~~~~~
+/usr/include/linux/posix_types.h:30:16: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_sighandler_t’
+   30 | typedef void (*__kernel_sighandler_t)(int);
+      |                ^~~~~~~~~~~~~~~~~~~~~
+/usr/include/linux/posix_types.h:33:13: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_key_t’
+   33 | typedef int __kernel_key_t;
+      |             ^~~~~~~~~~~~~~
+/usr/include/linux/posix_types.h:34:13: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_mqd_t’
+   34 | typedef int __kernel_mqd_t;
+      |             ^~~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/asm/posix_types.h:7,
+                 desde /usr/include/linux/posix_types.h:36:
+/usr/include/asm/posix_types_64.h:11:24: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_old_uid_t’
+   11 | typedef unsigned short __kernel_old_uid_t;
+      |                        ^~~~~~~~~~~~~~~~~~
+/usr/include/asm/posix_types_64.h:12:24: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_old_gid_t’
+   12 | typedef unsigned short __kernel_old_gid_t;
+      |                        ^~~~~~~~~~~~~~~~~~
+/usr/include/asm/posix_types_64.h:15:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_old_dev_t’
+   15 | typedef unsigned long   __kernel_old_dev_t;
+      |                         ^~~~~~~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/asm/posix_types_64.h:18:
+/usr/include/asm-generic/posix_types.h:15:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_long_t’
+   15 | typedef long            __kernel_long_t;
+      |                         ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:16:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_ulong_t’
+   16 | typedef unsigned long   __kernel_ulong_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:20:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_ino_t’
+   20 | typedef __kernel_ulong_t __kernel_ino_t;
+      |                          ^~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:24:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_mode_t’
+   24 | typedef unsigned int    __kernel_mode_t;
+      |                         ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:28:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_pid_t’
+   28 | typedef int             __kernel_pid_t;
+      |                         ^~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:32:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_ipc_pid_t’
+   32 | typedef int             __kernel_ipc_pid_t;
+      |                         ^~~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:36:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_uid_t’
+   36 | typedef unsigned int    __kernel_uid_t;
+      |                         ^~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:37:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_gid_t’
+   37 | typedef unsigned int    __kernel_gid_t;
+      |                         ^~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:41:33: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_suseconds_t’
+   41 | typedef __kernel_long_t         __kernel_suseconds_t;
+      |                                 ^~~~~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:45:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_daddr_t’
+   45 | typedef int             __kernel_daddr_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:49:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_uid32_t’
+   49 | typedef unsigned int    __kernel_uid32_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:50:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_gid32_t’
+   50 | typedef unsigned int    __kernel_gid32_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:72:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_size_t’
+   72 | typedef __kernel_ulong_t __kernel_size_t;
+      |                          ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:73:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_ssize_t’
+   73 | typedef __kernel_long_t __kernel_ssize_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:74:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_ptrdiff_t’
+   74 | typedef __kernel_long_t __kernel_ptrdiff_t;
+      |                         ^~~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:81:3: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_fsid_t’
+   81 | } __kernel_fsid_t;
+      |   ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:87:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_off_t’
+   87 | typedef __kernel_long_t __kernel_off_t;
+      |                         ^~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:88:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_loff_t’
+   88 | typedef long long       __kernel_loff_t;
+      |                         ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:89:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_old_time_t’
+   89 | typedef __kernel_long_t __kernel_old_time_t;
+      |                         ^~~~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:90:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_time_t’
+   90 | typedef __kernel_long_t __kernel_time_t;
+      |                         ^~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:91:19: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_time64_t’
+   91 | typedef long long __kernel_time64_t;
+      |                   ^~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:92:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__kernel_clock_t’
+   92 | typedef __kernel_long_t __kernel_clock_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:93:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_timer_t’
+   93 | typedef int             __kernel_timer_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:94:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_clockid_t’
+   94 | typedef int             __kernel_clockid_t;
+      |                         ^~~~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:95:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_caddr_t’
+   95 | typedef char *          __kernel_caddr_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:96:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_uid16_t’
+   96 | typedef unsigned short  __kernel_uid16_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/asm-generic/posix_types.h:97:25: error: se especificó una clase de almacenamiento para el parámetro ‘__kernel_gid16_t’
+   97 | typedef unsigned short  __kernel_gid16_t;
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/sys/socket.h:102:12: error: se especificó una clase de almacenamiento para el parámetro ‘socket’
+  102 | extern int socket (int __domain, int __type, int __protocol) __THROW;
+      |            ^~~~~~
+/usr/include/sys/socket.h:108:12: error: se especificó una clase de almacenamiento para el parámetro ‘socketpair’
+  108 | extern int socketpair (int __domain, int __type, int __protocol,
+      |            ^~~~~~~~~~
+/usr/include/sys/socket.h:112:57: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  112 | extern int bind (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len)
+      |                                                         ^~~~~~~~~
+/usr/include/sys/socket.h:117:25: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  117 |                         socklen_t *__restrict __len) __THROW;
+      |                         ^~~~~~~~~
+/usr/include/sys/socket.h:126:60: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  126 | extern int connect (int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len);
+      |                                                            ^~~~~~~~~
+/usr/include/sys/socket.h:131:25: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  131 |                         socklen_t *__restrict __len) __THROW;
+      |                         ^~~~~~~~~
+/usr/include/sys/socket.h:138:16: error: se especificó una clase de almacenamiento para el parámetro ‘send’
+  138 | extern ssize_t send (int __fd, const void *__buf, size_t __n, int __flags);
+      |                ^~~~
+/usr/include/sys/socket.h:145:16: error: se especificó una clase de almacenamiento para el parámetro ‘recv’
+  145 | extern ssize_t recv (int __fd, void *__buf, size_t __n, int __flags);
+      |                ^~~~
+/usr/include/sys/socket.h:154:24: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  154 |                        socklen_t __addr_len);
+      |                        ^~~~~~~~~
+/usr/include/sys/socket.h:165:26: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  165 |                          socklen_t *__restrict __addr_len);
+      |                          ^~~~~~~~~
+/usr/include/sys/socket.h:174:16: error: se especificó una clase de almacenamiento para el parámetro ‘sendmsg’
+  174 | extern ssize_t sendmsg (int __fd, const struct msghdr *__message,
+      |                ^~~~~~~
+/usr/include/sys/socket.h:216:16: error: se especificó una clase de almacenamiento para el parámetro ‘recvmsg’
+  216 | extern ssize_t recvmsg (int __fd, struct msghdr *__message, int __flags);
+      |                ^~~~~~~
+/usr/include/sys/socket.h:257:24: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  257 |                        socklen_t *__restrict __optlen) __THROW;
+      |                        ^~~~~~~~~
+/usr/include/sys/socket.h:278:46: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  278 |                        const void *__optval, socklen_t __optlen) __THROW;
+      |                                              ^~~~~~~~~
+/usr/include/sys/socket.h:296:12: error: se especificó una clase de almacenamiento para el parámetro ‘listen’
+  296 | extern int listen (int __fd, int __n) __THROW;
+      |            ^~~~~~
+/usr/include/sys/socket.h:307:20: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  307 |                    socklen_t *__restrict __addr_len);
+      |                    ^~~~~~~~~
+/usr/include/sys/socket.h:324:12: error: se especificó una clase de almacenamiento para el parámetro ‘shutdown’
+  324 | extern int shutdown (int __fd, int __how) __THROW;
+      |            ^~~~~~~~
+/usr/include/sys/socket.h:329:12: error: se especificó una clase de almacenamiento para el parámetro ‘sockatmark’
+  329 | extern int sockatmark (int __fd) __THROW;
+      |            ^~~~~~~~~~
+/usr/include/sys/socket.h:337:12: error: se especificó una clase de almacenamiento para el parámetro ‘isfdtype’
+  337 | extern int isfdtype (int __fd, int __fdtype) __THROW;
+      |            ^~~~~~~~
+/usr/include/netinet/in.h:30:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘in_addr_t’
+   30 | typedef uint32_t in_addr_t;
+      |                  ^~~~~~~~~
+/usr/include/netinet/in.h:33:5: error: nombre de tipo ‘in_addr_t’ desconocido
+   33 |     in_addr_t s_addr;
+      |     ^~~~~~~~~
+/usr/include/netinet/in.h:125:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘in_port_t’
+  125 | typedef uint16_t in_port_t;
+      |                  ^~~~~~~~~
+/usr/include/netinet/in.h:225:9: error: expected specifier-qualifier-list before ‘uint8_t’
+  225 |         uint8_t __u6_addr8[16];
+      |         ^~~~~~~
+/usr/include/netinet/in.h:237:30: error: se especificó una clase de almacenamiento para el parámetro ‘in6addr_any’
+  237 | extern const struct in6_addr in6addr_any;        /* :: */
+      |                              ^~~~~~~~~~~
+/usr/include/netinet/in.h:238:30: error: se especificó una clase de almacenamiento para el parámetro ‘in6addr_loopback’
+  238 | extern const struct in6_addr in6addr_loopback;   /* ::1 */
+      |                              ^~~~~~~~~~~~~~~~
+/usr/include/netinet/in.h:249:5: error: expected specifier-qualifier-list before ‘sa_family_t’
+  249 |     __SOCKADDR_COMMON (sin_);
+      |     ^~~~~~~~~~~~~~~~~
+/usr/include/netinet/in.h:264:5: error: expected specifier-qualifier-list before ‘sa_family_t’
+  264 |     __SOCKADDR_COMMON (sin6_);
+      |     ^~~~~~~~~~~~~~~~~
+/usr/include/netinet/in.h:326:5: error: expected specifier-qualifier-list before ‘uint32_t’
+  326 |     uint32_t gr_interface;
+      |     ^~~~~~~~
+/usr/include/netinet/in.h:335:5: error: expected specifier-qualifier-list before ‘uint32_t’
+  335 |     uint32_t gsr_interface;
+      |     ^~~~~~~~
+/usr/include/netinet/in.h:355:5: error: expected specifier-qualifier-list before ‘uint32_t’
+  355 |     uint32_t imsf_fmode;
+      |     ^~~~~~~~
+/usr/include/netinet/in.h:370:5: error: expected specifier-qualifier-list before ‘uint32_t’
+  370 |     uint32_t gf_interface;
+      |     ^~~~~~~~
+/usr/include/netinet/in.h:397:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘ntohl’
+  397 | extern uint32_t ntohl (uint32_t __netlong) __THROW __attribute__ ((__const__));
+      |                 ^~~~~
+/usr/include/netinet/in.h:398:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘ntohs’
+  398 | extern uint16_t ntohs (uint16_t __netshort)
+      |                 ^~~~~
+/usr/include/netinet/in.h:400:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘htonl’
+  400 | extern uint32_t htonl (uint32_t __hostlong)
+      |                 ^~~~~
+/usr/include/netinet/in.h:402:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘htons’
+  402 | extern uint16_t htons (uint16_t __hostshort)
+      |                 ^~~~~
+/usr/include/netinet/in.h:525:12: error: se especificó una clase de almacenamiento para el parámetro ‘bindresvport’
+  525 | extern int bindresvport (int __sockfd, struct sockaddr_in *__sock_in) __THROW;
+      |            ^~~~~~~~~~~~
+/usr/include/netinet/in.h:528:12: error: se especificó una clase de almacenamiento para el parámetro ‘bindresvport6’
+  528 | extern int bindresvport6 (int __sockfd, struct sockaddr_in6 *__sock_in)
+      |            ^~~~~~~~~~~~~
+/usr/include/arpa/inet.h:34:8: error: nombre de tipo ‘in_addr_t’ desconocido
+   34 | extern in_addr_t inet_addr (const char *__cp) __THROW;
+      |        ^~~~~~~~~
+/usr/include/arpa/inet.h:34:18: error: se especificó una clase de almacenamiento para el parámetro ‘inet_addr’
+   34 | extern in_addr_t inet_addr (const char *__cp) __THROW;
+      |                  ^~~~~~~~~
+/usr/include/arpa/inet.h:37:8: error: nombre de tipo ‘in_addr_t’ desconocido
+   37 | extern in_addr_t inet_lnaof (struct in_addr __in) __THROW;
+      |        ^~~~~~~~~
+/usr/include/arpa/inet.h:37:18: error: se especificó una clase de almacenamiento para el parámetro ‘inet_lnaof’
+   37 | extern in_addr_t inet_lnaof (struct in_addr __in) __THROW;
+      |                  ^~~~~~~~~~
+/usr/include/arpa/inet.h:41:38: error: nombre de tipo ‘in_addr_t’ desconocido; ¿quiso decir ‘caddr_t’?
+   41 | extern struct in_addr inet_makeaddr (in_addr_t __net, in_addr_t __host)
+      |                                      ^~~~~~~~~
+      |                                      caddr_t
+/usr/include/arpa/inet.h:41:55: error: nombre de tipo ‘in_addr_t’ desconocido; ¿quiso decir ‘caddr_t’?
+   41 | extern struct in_addr inet_makeaddr (in_addr_t __net, in_addr_t __host)
+      |                                                       ^~~~~~~~~
+      |                                                       caddr_t
+/usr/include/arpa/inet.h:45:8: error: nombre de tipo ‘in_addr_t’ desconocido
+   45 | extern in_addr_t inet_netof (struct in_addr __in) __THROW;
+      |        ^~~~~~~~~
+/usr/include/arpa/inet.h:45:18: error: se especificó una clase de almacenamiento para el parámetro ‘inet_netof’
+   45 | extern in_addr_t inet_netof (struct in_addr __in) __THROW;
+      |                  ^~~~~~~~~~
+/usr/include/arpa/inet.h:49:8: error: nombre de tipo ‘in_addr_t’ desconocido
+   49 | extern in_addr_t inet_network (const char *__cp) __THROW;
+      |        ^~~~~~~~~
+/usr/include/arpa/inet.h:49:18: error: se especificó una clase de almacenamiento para el parámetro ‘inet_network’
+   49 | extern in_addr_t inet_network (const char *__cp) __THROW;
+      |                  ^~~~~~~~~~~~
+/usr/include/arpa/inet.h:53:14: error: se especificó una clase de almacenamiento para el parámetro ‘inet_ntoa’
+   53 | extern char *inet_ntoa (struct in_addr __in) __THROW;
+      |              ^~~~~~~~~
+/usr/include/arpa/inet.h:58:12: error: se especificó una clase de almacenamiento para el parámetro ‘inet_pton’
+   58 | extern int inet_pton (int __af, const char *__restrict __cp,
+      |            ^~~~~~~~~
+/usr/include/arpa/inet.h:65:55: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+   65 |                               char *__restrict __buf, socklen_t __len)
+      |                                                       ^~~~~~~~~
+/usr/include/arpa/inet.h:73:12: error: se especificó una clase de almacenamiento para el parámetro ‘inet_aton’
+   73 | extern int inet_aton (const char *__cp, struct in_addr *__inp) __THROW;
+      |            ^~~~~~~~~
+/usr/include/arpa/inet.h:77:25: error: nombre de tipo ‘in_addr_t’ desconocido; ¿quiso decir ‘caddr_t’?
+   77 | extern char *inet_neta (in_addr_t __net, char *__buf, size_t __len) __THROW
+      |                         ^~~~~~~~~
+      |                         caddr_t
+/usr/include/arpa/inet.h:83:14: error: se especificó una clase de almacenamiento para el parámetro ‘inet_net_ntop’
+   83 | extern char *inet_net_ntop (int __af, const void *__cp, int __bits,
+      |              ^~~~~~~~~~~~~
+/usr/include/arpa/inet.h:89:12: error: se especificó una clase de almacenamiento para el parámetro ‘inet_net_pton’
+   89 | extern int inet_net_pton (int __af, const char *__cp,
+      |            ^~~~~~~~~~~~~
+/usr/include/arpa/inet.h:95:21: error: se especificó una clase de almacenamiento para el parámetro ‘inet_nsap_addr’
+   95 | extern unsigned int inet_nsap_addr (const char *__cp,
+      |                     ^~~~~~~~~~~~~~
+/usr/include/arpa/inet.h:100:14: error: se especificó una clase de almacenamiento para el parámetro ‘inet_nsap_ntoa’
+  100 | extern char *inet_nsap_ntoa (int __len, const unsigned char *__cp,
+      |              ^~~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/netdb.h:32,
+                 desde server.c:3:
+/usr/include/rpc/netdb.h:53:13: error: se especificó una clase de almacenamiento para el parámetro ‘setrpcent’
+   53 | extern void setrpcent (int __stayopen) __THROW;
+      |             ^~~~~~~~~
+/usr/include/rpc/netdb.h:54:13: error: se especificó una clase de almacenamiento para el parámetro ‘endrpcent’
+   54 | extern void endrpcent (void) __THROW;
+      |             ^~~~~~~~~
+/usr/include/rpc/netdb.h:55:23: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcbyname’
+   55 | extern struct rpcent *getrpcbyname (const char *__name) __THROW;
+      |                       ^~~~~~~~~~~~
+/usr/include/rpc/netdb.h:56:23: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcbynumber’
+   56 | extern struct rpcent *getrpcbynumber (int __number) __THROW;
+      |                       ^~~~~~~~~~~~~~
+/usr/include/rpc/netdb.h:57:23: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcent’
+   57 | extern struct rpcent *getrpcent (void) __THROW;
+      |                       ^~~~~~~~~
+/usr/include/rpc/netdb.h:60:12: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcbyname_r’
+   60 | extern int getrpcbyname_r (const char *__name, struct rpcent *__result_buf,
+      |            ^~~~~~~~~~~~~~
+/usr/include/rpc/netdb.h:64:12: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcbynumber_r’
+   64 | extern int getrpcbynumber_r (int __number, struct rpcent *__result_buf,
+      |            ^~~~~~~~~~~~~~~~
+/usr/include/rpc/netdb.h:68:12: error: se especificó una clase de almacenamiento para el parámetro ‘getrpcent_r’
+   68 | extern int getrpcent_r (struct rpcent *__result_buf, char *__buffer,
+      |            ^~~~~~~~~~~
+En el fichero incluido desde /usr/include/netdb.h:40:
+/usr/include/bits/netdb.h:31:3: error: expected specifier-qualifier-list before ‘uint32_t’
+   31 |   uint32_t n_net;               /* Network number.  */
+      |   ^~~~~~~~
+/usr/include/netdb.h:59:13: error: se especificó una clase de almacenamiento para el parámetro ‘__h_errno_location’
+   59 | extern int *__h_errno_location (void) __THROW __attribute__ ((__const__));
+      |             ^~~~~~~~~~~~~~~~~~
+/usr/include/netdb.h:90:13: error: se especificó una clase de almacenamiento para el parámetro ‘herror’
+   90 | extern void herror (const char *__str) __THROW;
+      |             ^~~~~~
+/usr/include/netdb.h:93:20: error: se especificó una clase de almacenamiento para el parámetro ‘hstrerror’
+   93 | extern const char *hstrerror (int __err_num) __THROW;
+      |                    ^~~~~~~~~
+/usr/include/netdb.h:115:13: error: se especificó una clase de almacenamiento para el parámetro ‘sethostent’
+  115 | extern void sethostent (int __stay_open);
+      |             ^~~~~~~~~~
+/usr/include/netdb.h:121:13: error: se especificó una clase de almacenamiento para el parámetro ‘endhostent’
+  121 | extern void endhostent (void);
+      |             ^~~~~~~~~~
+/usr/include/netdb.h:128:24: error: se especificó una clase de almacenamiento para el parámetro ‘gethostent’
+  128 | extern struct hostent *gethostent (void);
+      |                        ^~~~~~~~~~
+/usr/include/netdb.h:135:24: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyaddr’
+  135 | extern struct hostent *gethostbyaddr (const void *__addr, __socklen_t __len,
+      |                        ^~~~~~~~~~~~~
+/usr/include/netdb.h:142:24: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyname’
+  142 | extern struct hostent *gethostbyname (const char *__name);
+      |                        ^~~~~~~~~~~~~
+/usr/include/netdb.h:153:24: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyname2’
+  153 | extern struct hostent *gethostbyname2 (const char *__name, int __af);
+      |                        ^~~~~~~~~~~~~~
+/usr/include/netdb.h:165:12: error: se especificó una clase de almacenamiento para el parámetro ‘gethostent_r’
+  165 | extern int gethostent_r (struct hostent *__restrict __result_buf,
+      |            ^~~~~~~~~~~~
+/usr/include/netdb.h:170:12: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyaddr_r’
+  170 | extern int gethostbyaddr_r (const void *__restrict __addr, __socklen_t __len,
+      |            ^~~~~~~~~~~~~~~
+/usr/include/netdb.h:177:12: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyname_r’
+  177 | extern int gethostbyname_r (const char *__restrict __name,
+      |            ^~~~~~~~~~~~~~~
+/usr/include/netdb.h:183:12: error: se especificó una clase de almacenamiento para el parámetro ‘gethostbyname2_r’
+  183 | extern int gethostbyname2_r (const char *__restrict __name, int __af,
+      |            ^~~~~~~~~~~~~~~~
+/usr/include/netdb.h:196:13: error: se especificó una clase de almacenamiento para el parámetro ‘setnetent’
+  196 | extern void setnetent (int __stay_open);
+      |             ^~~~~~~~~
+/usr/include/netdb.h:202:13: error: se especificó una clase de almacenamiento para el parámetro ‘endnetent’
+  202 | extern void endnetent (void);
+      |             ^~~~~~~~~
+/usr/include/netdb.h:209:23: error: se especificó una clase de almacenamiento para el parámetro ‘getnetent’
+  209 | extern struct netent *getnetent (void);
+      |                       ^~~~~~~~~
+/usr/include/netdb.h:216:37: error: expected declaration specifiers or ‘...’ before ‘uint32_t’
+  216 | extern struct netent *getnetbyaddr (uint32_t __net, int __type);
+      |                                     ^~~~~~~~
+/usr/include/netdb.h:222:23: error: se especificó una clase de almacenamiento para el parámetro ‘getnetbyname’
+  222 | extern struct netent *getnetbyname (const char *__name);
+      |                       ^~~~~~~~~~~~
+/usr/include/netdb.h:235:12: error: se especificó una clase de almacenamiento para el parámetro ‘getnetent_r’
+  235 | extern int getnetent_r (struct netent *__restrict __result_buf,
+      |            ^~~~~~~~~~~
+/usr/include/netdb.h:240:28: error: expected declaration specifiers or ‘...’ before ‘uint32_t’
+  240 | extern int getnetbyaddr_r (uint32_t __net, int __type,
+      |                            ^~~~~~~~
+/usr/include/netdb.h:246:12: error: se especificó una clase de almacenamiento para el parámetro ‘getnetbyname_r’
+  246 | extern int getnetbyname_r (const char *__restrict __name,
+      |            ^~~~~~~~~~~~~~
+/usr/include/netdb.h:268:13: error: se especificó una clase de almacenamiento para el parámetro ‘setservent’
+  268 | extern void setservent (int __stay_open);
+      |             ^~~~~~~~~~
+/usr/include/netdb.h:274:13: error: se especificó una clase de almacenamiento para el parámetro ‘endservent’
+  274 | extern void endservent (void);
+      |             ^~~~~~~~~~
+/usr/include/netdb.h:281:24: error: se especificó una clase de almacenamiento para el parámetro ‘getservent’
+  281 | extern struct servent *getservent (void);
+      |                        ^~~~~~~~~~
+/usr/include/netdb.h:288:24: error: se especificó una clase de almacenamiento para el parámetro ‘getservbyname’
+  288 | extern struct servent *getservbyname (const char *__name, const char *__proto);
+      |                        ^~~~~~~~~~~~~
+/usr/include/netdb.h:295:24: error: se especificó una clase de almacenamiento para el parámetro ‘getservbyport’
+  295 | extern struct servent *getservbyport (int __port, const char *__proto);
+      |                        ^~~~~~~~~~~~~
+/usr/include/netdb.h:306:12: error: se especificó una clase de almacenamiento para el parámetro ‘getservent_r’
+  306 | extern int getservent_r (struct servent *__restrict __result_buf,
+      |            ^~~~~~~~~~~~
+/usr/include/netdb.h:310:12: error: se especificó una clase de almacenamiento para el parámetro ‘getservbyname_r’
+  310 | extern int getservbyname_r (const char *__restrict __name,
+      |            ^~~~~~~~~~~~~~~
+/usr/include/netdb.h:316:12: error: se especificó una clase de almacenamiento para el parámetro ‘getservbyport_r’
+  316 | extern int getservbyport_r (int __port, const char *__restrict __proto,
+      |            ^~~~~~~~~~~~~~~
+/usr/include/netdb.h:336:13: error: se especificó una clase de almacenamiento para el parámetro ‘setprotoent’
+  336 | extern void setprotoent (int __stay_open);
+      |             ^~~~~~~~~~~
+/usr/include/netdb.h:342:13: error: se especificó una clase de almacenamiento para el parámetro ‘endprotoent’
+  342 | extern void endprotoent (void);
+      |             ^~~~~~~~~~~
+/usr/include/netdb.h:349:25: error: se especificó una clase de almacenamiento para el parámetro ‘getprotoent’
+  349 | extern struct protoent *getprotoent (void);
+      |                         ^~~~~~~~~~~
+/usr/include/netdb.h:355:25: error: se especificó una clase de almacenamiento para el parámetro ‘getprotobyname’
+  355 | extern struct protoent *getprotobyname (const char *__name);
+      |                         ^~~~~~~~~~~~~~
+/usr/include/netdb.h:361:25: error: se especificó una clase de almacenamiento para el parámetro ‘getprotobynumber’
+  361 | extern struct protoent *getprotobynumber (int __proto);
+      |                         ^~~~~~~~~~~~~~~~
+/usr/include/netdb.h:372:12: error: se especificó una clase de almacenamiento para el parámetro ‘getprotoent_r’
+  372 | extern int getprotoent_r (struct protoent *__restrict __result_buf,
+      |            ^~~~~~~~~~~~~
+/usr/include/netdb.h:376:12: error: se especificó una clase de almacenamiento para el parámetro ‘getprotobyname_r’
+  376 | extern int getprotobyname_r (const char *__restrict __name,
+      |            ^~~~~~~~~~~~~~~~
+/usr/include/netdb.h:381:12: error: se especificó una clase de almacenamiento para el parámetro ‘getprotobynumber_r’
+  381 | extern int getprotobynumber_r (int __proto,
+      |            ^~~~~~~~~~~~~~~~~~
+/usr/include/netdb.h:393:12: error: se especificó una clase de almacenamiento para el parámetro ‘setnetgrent’
+  393 | extern int setnetgrent (const char *__netgroup);
+      |            ^~~~~~~~~~~
+/usr/include/netdb.h:401:13: error: se especificó una clase de almacenamiento para el parámetro ‘endnetgrent’
+  401 | extern void endnetgrent (void);
+      |             ^~~~~~~~~~~
+/usr/include/netdb.h:410:12: error: se especificó una clase de almacenamiento para el parámetro ‘getnetgrent’
+  410 | extern int getnetgrent (char **__restrict __hostp,
+      |            ^~~~~~~~~~~
+/usr/include/netdb.h:421:12: error: se especificó una clase de almacenamiento para el parámetro ‘innetgr’
+  421 | extern int innetgr (const char *__netgroup, const char *__host,
+      |            ^~~~~~~
+/usr/include/netdb.h:430:12: error: se especificó una clase de almacenamiento para el parámetro ‘getnetgrent_r’
+  430 | extern int getnetgrent_r (char **__restrict __hostp,
+      |            ^~~~~~~~~~~~~
+/usr/include/netdb.h:449:12: error: se especificó una clase de almacenamiento para el parámetro ‘rcmd’
+  449 | extern int rcmd (char **__restrict __ahost, unsigned short int __rport,
+      |            ^~~~
+/usr/include/netdb.h:465:21: error: expected declaration specifiers or ‘...’ before ‘sa_family_t’
+  465 |                     sa_family_t __af);
+      |                     ^~~~~~~~~~~
+/usr/include/netdb.h:477:12: error: se especificó una clase de almacenamiento para el parámetro ‘rexec’
+  477 | extern int rexec (char **__restrict __ahost, int __rport,
+      |            ^~~~~
+/usr/include/netdb.h:493:22: error: expected declaration specifiers or ‘...’ before ‘sa_family_t’
+  493 |                      sa_family_t __af);
+      |                      ^~~~~~~~~~~
+/usr/include/netdb.h:503:12: error: se especificó una clase de almacenamiento para el parámetro ‘ruserok’
+  503 | extern int ruserok (const char *__rhost, int __suser,
+      |            ^~~~~~~
+/usr/include/netdb.h:515:24: error: expected declaration specifiers or ‘...’ before ‘sa_family_t’
+  515 |                        sa_family_t __af);
+      |                        ^~~~~~~~~~~
+/usr/include/netdb.h:526:22: error: expected declaration specifiers or ‘...’ before ‘uint32_t’
+  526 | extern int iruserok (uint32_t __raddr, int __suser,
+      |                      ^~~~~~~~
+/usr/include/netdb.h:539:25: error: expected declaration specifiers or ‘...’ before ‘sa_family_t’
+  539 |                         sa_family_t __af);
+      |                         ^~~~~~~~~~~
+/usr/include/netdb.h:549:12: error: se especificó una clase de almacenamiento para el parámetro ‘rresvport’
+  549 | extern int rresvport (int *__alport);
+      |            ^~~~~~~~~
+/usr/include/netdb.h:558:41: error: expected declaration specifiers or ‘...’ before ‘sa_family_t’
+  558 | extern int rresvport_af (int *__alport, sa_family_t __af);
+      |                                         ^~~~~~~~~~~
+/usr/include/netdb.h:571:3: error: expected specifier-qualifier-list before ‘socklen_t’
+  571 |   socklen_t ai_addrlen;         /* Length of socket address.  */
+      |   ^~~~~~~~~
+/usr/include/netdb.h:660:12: error: se especificó una clase de almacenamiento para el parámetro ‘getaddrinfo’
+  660 | extern int getaddrinfo (const char *__restrict __name,
+      |            ^~~~~~~~~~~
+/usr/include/netdb.h:666:13: error: se especificó una clase de almacenamiento para el parámetro ‘freeaddrinfo’
+  666 | extern void freeaddrinfo (struct addrinfo *__ai) __THROW;
+      |             ^~~~~~~~~~~~
+/usr/include/netdb.h:669:20: error: se especificó una clase de almacenamiento para el parámetro ‘gai_strerror’
+  669 | extern const char *gai_strerror (int __ecode) __THROW;
+      |                    ^~~~~~~~~~~~
+/usr/include/netdb.h:676:25: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  676 |                         socklen_t __salen, char *__restrict __host,
+      |                         ^~~~~~~~~
+/usr/include/netdb.h:677:25: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  677 |                         socklen_t __hostlen, char *__restrict __serv,
+      |                         ^~~~~~~~~
+/usr/include/netdb.h:678:25: error: expected declaration specifiers or ‘...’ before ‘socklen_t’
+  678 |                         socklen_t __servlen, int __flags);
+      |                         ^~~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:32,
+                 desde server.c:5:
+/usr/include/bits/types/sig_atomic_t.h:8:24: error: se especificó una clase de almacenamiento para el parámetro ‘sig_atomic_t’
+    8 | typedef __sig_atomic_t sig_atomic_t;
+      |                        ^~~~~~~~~~~~
+En el fichero incluido desde /usr/include/bits/types/siginfo_t.h:6,
+                 desde /usr/include/signal.h:57:
+/usr/include/bits/types/__sigval_t.h:30:22: error: se especificó una clase de almacenamiento para el parámetro ‘__sigval_t’
+   30 | typedef union sigval __sigval_t;
+      |                      ^~~~~~~~~~
+/usr/include/bits/types/siginfo_t.h:67:13: error: expected specifier-qualifier-list before ‘__sigval_t’
+   67 |             __sigval_t si_sigval;       /* Signal value.  */
+      |             ^~~~~~~~~~
+/usr/include/bits/types/siginfo_t.h:75:13: error: expected specifier-qualifier-list before ‘__sigval_t’
+   75 |             __sigval_t si_sigval;       /* Signal value.  */
+      |             ^~~~~~~~~~
+/usr/include/bits/types/siginfo_t.h:124:5: error: se especificó una clase de almacenamiento para el parámetro ‘siginfo_t’
+  124 |   } siginfo_t __SI_ALIGNMENT;
+      |     ^~~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:62:
+/usr/include/bits/types/sigval_t.h:16:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘sigval_t’
+   16 | typedef __sigval_t sigval_t;
+      |                    ^~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:66:
+/usr/include/bits/types/sigevent_t.h:24:5: error: expected specifier-qualifier-list before ‘__sigval_t’
+   24 |     __sigval_t sigev_value;
+      |     ^~~~~~~~~~
+/usr/include/bits/types/sigevent_t.h:42:5: error: se especificó una clase de almacenamiento para el parámetro ‘sigevent_t’
+   42 |   } sigevent_t;
+      |     ^~~~~~~~~~
+/usr/include/signal.h:72:16: error: se especificó una clase de almacenamiento para el parámetro ‘__sighandler_t’
+   72 | typedef void (*__sighandler_t) (int);
+      |                ^~~~~~~~~~~~~~
+/usr/include/signal.h:77:23: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘__sysv_signal’
+   77 | extern __sighandler_t __sysv_signal (int __sig, __sighandler_t __handler)
+      |                       ^~~~~~~~~~~~~
+/usr/include/signal.h:88:23: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘signal’
+   88 | extern __sighandler_t signal (int __sig, __sighandler_t __handler)
+      |                       ^~~~~~
+/usr/include/signal.h:112:12: error: se especificó una clase de almacenamiento para el parámetro ‘kill’
+  112 | extern int kill (__pid_t __pid, int __sig) __THROW;
+      |            ^~~~
+/usr/include/signal.h:119:12: error: se especificó una clase de almacenamiento para el parámetro ‘killpg’
+  119 | extern int killpg (__pid_t __pgrp, int __sig) __THROW;
+      |            ^~~~~~
+/usr/include/signal.h:123:12: error: se especificó una clase de almacenamiento para el parámetro ‘raise’
+  123 | extern int raise (int __sig) __THROW;
+      |            ^~~~~
+/usr/include/signal.h:127:23: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘ssignal’
+  127 | extern __sighandler_t ssignal (int __sig, __sighandler_t __handler)
+      |                       ^~~~~~~
+/usr/include/signal.h:129:12: error: se especificó una clase de almacenamiento para el parámetro ‘gsignal’
+  129 | extern int gsignal (int __sig) __THROW;
+      |            ^~~~~~~
+/usr/include/signal.h:134:13: error: se especificó una clase de almacenamiento para el parámetro ‘psignal’
+  134 | extern void psignal (int __sig, const char *__s);
+      |             ^~~~~~~
+/usr/include/signal.h:137:39: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+  137 | extern void psiginfo (const siginfo_t *__pinfo, const char *__s);
+      |                                       ^
+/usr/include/signal.h:173:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigblock’
+  173 | extern int sigblock (int __mask) __THROW __attribute_deprecated__;
+      |            ^~~~~~~~
+/usr/include/signal.h:176:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigsetmask’
+  176 | extern int sigsetmask (int __mask) __THROW __attribute_deprecated__;
+      |            ^~~~~~~~~~
+/usr/include/signal.h:179:12: error: se especificó una clase de almacenamiento para el parámetro ‘siggetmask’
+  179 | extern int siggetmask (void) __THROW __attribute_deprecated__;
+      |            ^~~~~~~~~~
+/usr/include/signal.h:193:24: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘sig_t’
+  193 | typedef __sighandler_t sig_t;
+      |                        ^~~~~
+/usr/include/signal.h:199:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigemptyset’
+  199 | extern int sigemptyset (sigset_t *__set) __THROW __nonnull ((1));
+      |            ^~~~~~~~~~~
+/usr/include/signal.h:202:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigfillset’
+  202 | extern int sigfillset (sigset_t *__set) __THROW __nonnull ((1));
+      |            ^~~~~~~~~~
+/usr/include/signal.h:205:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigaddset’
+  205 | extern int sigaddset (sigset_t *__set, int __signo) __THROW __nonnull ((1));
+      |            ^~~~~~~~~
+/usr/include/signal.h:208:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigdelset’
+  208 | extern int sigdelset (sigset_t *__set, int __signo) __THROW __nonnull ((1));
+      |            ^~~~~~~~~
+/usr/include/signal.h:211:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigismember’
+  211 | extern int sigismember (const sigset_t *__set, int __signo)
+      |            ^~~~~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:229:
+/usr/include/bits/sigaction.h:34:9: error: expected specifier-qualifier-list before ‘__sighandler_t’
+   34 |         __sighandler_t sa_handler;
+      |         ^~~~~~~~~~~~~~
+/usr/include/signal.h:232:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigprocmask’
+  232 | extern int sigprocmask (int __how, const sigset_t *__restrict __set,
+      |            ^~~~~~~~~~~
+/usr/include/signal.h:240:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigsuspend’
+  240 | extern int sigsuspend (const sigset_t *__set) __nonnull ((1));
+      |            ^~~~~~~~~~
+/usr/include/signal.h:243:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigaction’
+  243 | extern int sigaction (int __sig, const struct sigaction *__restrict __act,
+      |            ^~~~~~~~~
+/usr/include/signal.h:247:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigpending’
+  247 | extern int sigpending (sigset_t *__set) __THROW __nonnull ((1));
+      |            ^~~~~~~~~~
+/usr/include/signal.h:255:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigwait’
+  255 | extern int sigwait (const sigset_t *__restrict __set, int *__restrict __sig)
+      |            ^~~~~~~
+/usr/include/signal.h:265:25: error: expected declaration specifiers or ‘...’ before ‘siginfo_t’
+  265 |                         siginfo_t *__restrict __info) __nonnull ((1));
+      |                         ^~~~~~~~~
+/usr/include/signal.h:274:26: error: expected declaration specifiers or ‘...’ before ‘siginfo_t’
+  274 |                          siginfo_t *__restrict __info,
+      |                          ^~~~~~~~~
+/usr/include/signal.h:292:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigqueue’
+  292 | extern int sigqueue (__pid_t __pid, int __sig, const union sigval __val)
+      |            ^~~~~~~~
+/usr/include/signal.h:304:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigreturn’
+  304 | extern int sigreturn (struct sigcontext *__scp) __THROW;
+      |            ^~~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:313:
+/usr/include/bits/types/stack_t.h:31:5: error: se especificó una clase de almacenamiento para el parámetro ‘stack_t’
+   31 |   } stack_t;
+      |     ^~~~~~~
+En el fichero incluido desde /usr/include/signal.h:316:
+/usr/include/sys/ucontext.h:37:1: error: expected declaration specifiers before ‘__extension__’
+   37 | __extension__ typedef long long int greg_t;
+      | ^~~~~~~~~~~~~
+/usr/include/sys/ucontext.h:46:9: error: nombre de tipo ‘greg_t’ desconocido
+   46 | typedef greg_t gregset_t[__NGREG];
+      |         ^~~~~~
+/usr/include/sys/ucontext.h:46:16: error: se especificó una clase de almacenamiento para el parámetro ‘gregset_t’
+   46 | typedef greg_t gregset_t[__NGREG];
+      |                ^~~~~~~~~
+/usr/include/sys/ucontext.h:130:31: error: se especificó una clase de almacenamiento para el parámetro ‘fpregset_t’
+  130 | typedef struct _libc_fpstate *fpregset_t;
+      |                               ^~~~~~~~~~
+/usr/include/sys/ucontext.h:135:5: error: expected specifier-qualifier-list before ‘gregset_t’
+  135 |     gregset_t __ctx(gregs);
+      |     ^~~~~~~~~
+/usr/include/sys/ucontext.h:139:3: error: se especificó una clase de almacenamiento para el parámetro ‘mcontext_t’
+  139 | } mcontext_t;
+      |   ^~~~~~~~~~
+/usr/include/sys/ucontext.h:146:5: error: expected specifier-qualifier-list before ‘stack_t’
+  146 |     stack_t uc_stack;
+      |     ^~~~~~~
+/usr/include/sys/ucontext.h:151:5: error: se especificó una clase de almacenamiento para el parámetro ‘ucontext_t’
+  151 |   } ucontext_t;
+      |     ^~~~~~~~~~
+/usr/include/signal.h:324:12: error: se especificó una clase de almacenamiento para el parámetro ‘siginterrupt’
+  324 | extern int siginterrupt (int __sig, int __interrupt) __THROW
+      |            ^~~~~~~~~~~~
+/usr/include/signal.h:333:39: error: expected ‘;’, ‘,’ or ‘)’ before ‘*’ token
+  333 | extern int sigaltstack (const stack_t *__restrict __ss,
+      |                                       ^
+/usr/include/signal.h:347:12: error: se especificó una clase de almacenamiento para el parámetro ‘sigstack’
+  347 | extern int sigstack (struct sigstack *__ss, struct sigstack *__oss)
+      |            ^~~~~~~~
+En el fichero incluido desde /usr/include/signal.h:376:
+/usr/include/bits/sigthread.h:31:12: error: se especificó una clase de almacenamiento para el parámetro ‘pthread_sigmask’
+   31 | extern int pthread_sigmask (int __how,
+      |            ^~~~~~~~~~~~~~~
+/usr/include/bits/sigthread.h:36:12: error: se especificó una clase de almacenamiento para el parámetro ‘pthread_kill’
+   36 | extern int pthread_kill (pthread_t __threadid, int __signo) __THROW;
+      |            ^~~~~~~~~~~~
+/usr/include/signal.h:383:12: error: se especificó una clase de almacenamiento para el parámetro ‘__libc_current_sigrtmin’
+  383 | extern int __libc_current_sigrtmin (void) __THROW;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/signal.h:385:12: error: se especificó una clase de almacenamiento para el parámetro ‘__libc_current_sigrtmax’
+  385 | extern int __libc_current_sigrtmax (void) __THROW;
+      |            ^~~~~~~~~~~~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/stdio.h:36,
+                 desde server.c:7:
+/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/stdarg.h:40:27: error: se especificó una clase de almacenamiento para el parámetro ‘__gnuc_va_list’
+   40 | typedef __builtin_va_list __gnuc_va_list;
+      |                           ^~~~~~~~~~~~~~
+En el fichero incluido desde /usr/include/bits/types/__fpos_t.h:5,
+                 desde /usr/include/stdio.h:39:
+/usr/include/bits/types/__mbstate_t.h:21:3: error: se especificó una clase de almacenamiento para el parámetro ‘__mbstate_t’
+   21 | } __mbstate_t;
+      |   ^~~~~~~~~~~
+/usr/include/bits/types/__fpos_t.h:13:3: error: expected specifier-qualifier-list before ‘__mbstate_t’
+   13 |   __mbstate_t __state;
+      |   ^~~~~~~~~~~
+/usr/include/bits/types/__fpos_t.h:14:3: error: se especificó una clase de almacenamiento para el parámetro ‘__fpos_t’
+   14 | } __fpos_t;
+      |   ^~~~~~~~
+En el fichero incluido desde /usr/include/stdio.h:40:
+/usr/include/bits/types/__fpos64_t.h:13:3: error: expected specifier-qualifier-list before ‘__mbstate_t’
+   13 |   __mbstate_t __state;
+      |   ^~~~~~~~~~~
+/usr/include/bits/types/__fpos64_t.h:14:3: error: se especificó una clase de almacenamiento para el parámetro ‘__fpos64_t’
+   14 | } __fpos64_t;
+      |   ^~~~~~~~~~
+En el fichero incluido desde /usr/include/stdio.h:41:
+/usr/include/bits/types/__FILE.h:5:25: error: se especificó una clase de almacenamiento para el parámetro ‘__FILE’
+    5 | typedef struct _IO_FILE __FILE;
+      |                         ^~~~~~
+En el fichero incluido desde /usr/include/stdio.h:42:
+/usr/include/bits/types/FILE.h:7:25: error: se especificó una clase de almacenamiento para el parámetro ‘FILE’
+    7 | typedef struct _IO_FILE FILE;
+      |                         ^~~~
+En el fichero incluido desde /usr/include/stdio.h:43:
+/usr/include/bits/types/struct_FILE.h:43:14: error: se especificó una clase de almacenamiento para el parámetro ‘_IO_lock_t’
+   43 | typedef void _IO_lock_t;
+      |              ^~~~~~~~~~
+/usr/include/bits/types/struct_FILE.h:81:3: error: expected specifier-qualifier-list before ‘_IO_lock_t’
+   81 |   _IO_lock_t *_lock;
+      |   ^~~~~~~~~~
+En el fichero incluido desde /usr/include/stdio.h:46:
+/usr/include/bits/types/cookie_io_functions_t.h:27:19: error: se especificó una clase de almacenamiento para el parámetro ‘cookie_read_function_t’
+   27 | typedef __ssize_t cookie_read_function_t (void *__cookie, char *__buf,
+      |                   ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/bits/types/cookie_io_functions_t.h:36:19: error: se especificó una clase de almacenamiento para el parámetro ‘cookie_write_function_t’
+   36 | typedef __ssize_t cookie_write_function_t (void *__cookie, const char *__buf,
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/bits/types/cookie_io_functions_t.h:45:13: error: se especificó una clase de almacenamiento para el parámetro ‘cookie_seek_function_t’
+   45 | typedef int cookie_seek_function_t (void *__cookie, __off64_t *__pos, int __w);
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/bits/types/cookie_io_functions_t.h:48:13: error: se especificó una clase de almacenamiento para el parámetro ‘cookie_close_function_t’
+   48 | typedef int cookie_close_function_t (void *__cookie);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/bits/types/cookie_io_functions_t.h:57:3: error: expected specifier-qualifier-list before ‘cookie_read_function_t’
+   57 |   cookie_read_function_t *read;         /* Read bytes.  */
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/bits/types/cookie_io_functions_t.h:61:3: error: se especificó una clase de almacenamiento para el parámetro ‘cookie_io_functions_t’
+   61 | } cookie_io_functions_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/usr/include/stdio.h:52:24: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘va_list’
+   52 | typedef __gnuc_va_list va_list;
+      |                        ^~~~~~~
+/usr/include/stdio.h:84:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘fpos_t’
+   84 | typedef __fpos_t fpos_t;
+      |                  ^~~~~~
+/usr/include/stdio.h:148:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  148 | extern FILE *stdin;             /* Standard input stream.  */
+      |             ^
+/usr/include/stdio.h:149:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  149 | extern FILE *stdout;            /* Standard output stream.  */
+      |             ^
+/usr/include/stdio.h:150:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  150 | extern FILE *stderr;            /* Standard error output stream.  */
+      |             ^
+/usr/include/stdio.h:157:12: error: se especificó una clase de almacenamiento para el parámetro ‘remove’
+  157 | extern int remove (const char *__filename) __THROW;
+      |            ^~~~~~
+/usr/include/stdio.h:159:12: error: se especificó una clase de almacenamiento para el parámetro ‘rename’
+  159 | extern int rename (const char *__old, const char *__new) __THROW;
+      |            ^~~~~~
+/usr/include/stdio.h:163:12: error: se especificó una clase de almacenamiento para el parámetro ‘renameat’
+  163 | extern int renameat (int __oldfd, const char *__old, int __newfd,
+      |            ^~~~~~~~
+/usr/include/stdio.h:183:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  183 | extern int fclose (FILE *__stream) __nonnull ((1));
+      |                    ^~~~
+/usr/include/stdio.h:193:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  193 | extern FILE *tmpfile (void)
+      |             ^
+/usr/include/stdio.h:210:14: error: se especificó una clase de almacenamiento para el parámetro ‘tmpnam’
+  210 | extern char *tmpnam (char[L_tmpnam]) __THROW __wur;
+      |              ^~~~~~
+/usr/include/stdio.h:215:14: error: se especificó una clase de almacenamiento para el parámetro ‘tmpnam_r’
+  215 | extern char *tmpnam_r (char __s[L_tmpnam]) __THROW __wur;
+      |              ^~~~~~~~
+/usr/include/stdio.h:227:14: error: se especificó una clase de almacenamiento para el parámetro ‘tempnam’
+  227 | extern char *tempnam (const char *__dir, const char *__pfx)
+      |              ^~~~~~~
+/usr/include/stdio.h:235:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  235 | extern int fflush (FILE *__stream);
+      |                    ^~~~
+/usr/include/stdio.h:244:29: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  244 | extern int fflush_unlocked (FILE *__stream);
+      |                             ^~~~
+/usr/include/stdio.h:263:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  263 | extern FILE *fopen (const char *__restrict __filename,
+      |             ^
+/usr/include/stdio.h:270:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  270 | extern FILE *freopen (const char *__restrict __filename,
+      |             ^
+/usr/include/stdio.h:298:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  298 | extern FILE *fdopen (int __fd, const char *__modes) __THROW
+      |             ^
+/usr/include/stdio.h:305:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  305 | extern FILE *fopencookie (void *__restrict __magic_cookie,
+      |             ^
+/usr/include/stdio.h:313:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  313 | extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
+      |             ^
+/usr/include/stdio.h:319:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  319 | extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __THROW
+      |             ^
+/usr/include/stdio.h:333:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  333 | extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __THROW;
+      |                     ^~~~
+/usr/include/stdio.h:337:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  337 | extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
+      |                     ^~~~
+/usr/include/stdio.h:343:24: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  343 | extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
+      |                        ^~~~
+/usr/include/stdio.h:347:25: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  347 | extern void setlinebuf (FILE *__stream) __THROW;
+      |                         ^~~~
+/usr/include/stdio.h:355:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  355 | extern int fprintf (FILE *__restrict __stream,
+      |                     ^~~~
+/usr/include/stdio.h:361:12: error: se especificó una clase de almacenamiento para el parámetro ‘printf’
+  361 | extern int printf (const char *__restrict __format, ...);
+      |            ^~~~~~
+/usr/include/stdio.h:363:12: error: se especificó una clase de almacenamiento para el parámetro ‘sprintf’
+  363 | extern int sprintf (char *__restrict __s,
+      |            ^~~~~~~
+/usr/include/stdio.h:370:22: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  370 | extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
+      |                      ^~~~
+/usr/include/stdio.h:371:22: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  371 |                      __gnuc_va_list __arg);
+      |                      ^~~~~~~~~~~~~~
+/usr/include/stdio.h:376:54: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  376 | extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+      |                                                      ^~~~~~~~~~~~~~
+/usr/include/stdio.h:379:22: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  379 |                      __gnuc_va_list __arg) __THROWNL;
+      |                      ^~~~~~~~~~~~~~
+/usr/include/stdio.h:383:12: error: se especificó una clase de almacenamiento para el parámetro ‘snprintf’
+  383 | extern int snprintf (char *__restrict __s, size_t __maxlen,
+      |            ^~~~~~~~
+/usr/include/stdio.h:388:56: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  388 |                       const char *__restrict __format, __gnuc_va_list __arg)
+      |                                                        ^~~~~~~~~~~~~~
+/usr/include/stdio.h:396:23: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  396 |                       __gnuc_va_list __arg)
+      |                       ^~~~~~~~~~~~~~
+/usr/include/stdio.h:398:12: error: se especificó una clase de almacenamiento para el parámetro ‘__asprintf’
+  398 | extern int __asprintf (char **__restrict __ptr,
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:401:12: error: se especificó una clase de almacenamiento para el parámetro ‘asprintf’
+  401 | extern int asprintf (char **__restrict __ptr,
+      |            ^~~~~~~~
+/usr/include/stdio.h:409:22: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  409 |                      __gnuc_va_list __arg)
+      |                      ^~~~~~~~~~~~~~
+/usr/include/stdio.h:411:12: error: se especificó una clase de almacenamiento para el parámetro ‘dprintf’
+  411 | extern int dprintf (int __fd, const char *__restrict __fmt, ...)
+      |            ^~~~~~~
+/usr/include/stdio.h:420:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  420 | extern int fscanf (FILE *__restrict __stream,
+      |                    ^~~~
+/usr/include/stdio.h:426:12: error: se especificó una clase de almacenamiento para el parámetro ‘scanf’
+  426 | extern int scanf (const char *__restrict __format, ...) __wur;
+      |            ^~~~~
+/usr/include/stdio.h:428:12: error: se especificó una clase de almacenamiento para el parámetro ‘sscanf’
+  428 | extern int sscanf (const char *__restrict __s,
+      |            ^~~~~~
+En el fichero incluido desde /usr/include/features.h:503,
+                 desde /usr/include/bits/libc-header-start.h:33,
+                 desde /usr/include/stdlib.h:26,
+                 desde serverUtils.h:3:
+/usr/include/stdio.h:460:12: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  460 | extern int __REDIRECT (fscanf, (FILE *__restrict __stream,
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:463:12: error: se especificó una clase de almacenamiento para el parámetro ‘scanf’
+  463 | extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:463:12: error: redefinición del parámetro ‘scanf’
+/usr/include/stdio.h:426:12: nota: previous definition of ‘scanf’ with type ‘int (*)(const char * restrict, ...)’
+  426 | extern int scanf (const char *__restrict __format, ...) __wur;
+      |            ^~~~~
+/usr/include/stdio.h:465:12: error: se especificó una clase de almacenamiento para el parámetro ‘sscanf’
+  465 | extern int __REDIRECT_NTH (sscanf, (const char *__restrict __s,
+      |            ^~~~~~~~~~~~~~
+/usr/include/stdio.h:465:12: error: redefinición del parámetro ‘sscanf’
+/usr/include/stdio.h:428:12: nota: previous definition of ‘sscanf’ with type ‘int (*)(const char * restrict,  const char * restrict, ...)’
+  428 | extern int sscanf (const char *__restrict __s,
+      |            ^~~~~~
+/usr/include/stdio.h:486:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  486 | extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
+      |                     ^~~~
+/usr/include/stdio.h:487:21: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  487 |                     __gnuc_va_list __arg)
+      |                     ^~~~~~~~~~~~~~
+/usr/include/stdio.h:494:53: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  494 | extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
+      |                                                     ^~~~~~~~~~~~~~
+/usr/include/stdio.h:499:54: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  499 |                     const char *__restrict __format, __gnuc_va_list __arg)
+      |                                                      ^~~~~~~~~~~~~~
+/usr/include/stdio.h:536:12: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  536 | extern int __REDIRECT (vfscanf,
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:536:12: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  536 | extern int __REDIRECT (vfscanf,
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:541:12: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  541 | extern int __REDIRECT (vscanf, (const char *__restrict __format,
+      |            ^~~~~~~~~~
+/usr/include/stdio.h:544:12: error: expected declaration specifiers or ‘...’ before ‘__gnuc_va_list’
+  544 | extern int __REDIRECT_NTH (vsscanf,
+      |            ^~~~~~~~~~~~~~
+/usr/include/stdio.h:571:19: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  571 | extern int fgetc (FILE *__stream);
+      |                   ^~~~
+/usr/include/stdio.h:572:18: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  572 | extern int getc (FILE *__stream);
+      |                  ^~~~
+/usr/include/stdio.h:578:12: error: se especificó una clase de almacenamiento para el parámetro ‘getchar’
+  578 | extern int getchar (void);
+      |            ^~~~~~~
+/usr/include/stdio.h:585:27: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  585 | extern int getc_unlocked (FILE *__stream);
+      |                           ^~~~
+/usr/include/stdio.h:586:12: error: se especificó una clase de almacenamiento para el parámetro ‘getchar_unlocked’
+  586 | extern int getchar_unlocked (void);
+      |            ^~~~~~~~~~~~~~~~
+/usr/include/stdio.h:596:28: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  596 | extern int fgetc_unlocked (FILE *__stream);
+      |                            ^~~~
+/usr/include/stdio.h:607:28: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  607 | extern int fputc (int __c, FILE *__stream);
+      |                            ^~~~
+/usr/include/stdio.h:608:27: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  608 | extern int putc (int __c, FILE *__stream);
+      |                           ^~~~
+/usr/include/stdio.h:614:12: error: se especificó una clase de almacenamiento para el parámetro ‘putchar’
+  614 | extern int putchar (int __c);
+      |            ^~~~~~~
+/usr/include/stdio.h:623:37: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  623 | extern int fputc_unlocked (int __c, FILE *__stream);
+      |                                     ^~~~
+/usr/include/stdio.h:631:36: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  631 | extern int putc_unlocked (int __c, FILE *__stream);
+      |                                    ^~~~
+/usr/include/stdio.h:632:12: error: se especificó una clase de almacenamiento para el parámetro ‘putchar_unlocked’
+  632 | extern int putchar_unlocked (int __c);
+      |            ^~~~~~~~~~~~~~~~
+/usr/include/stdio.h:639:18: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  639 | extern int getw (FILE *__stream);
+      |                  ^~~~
+/usr/include/stdio.h:642:27: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  642 | extern int putw (int __w, FILE *__stream);
+      |                           ^~~~
+/usr/include/stdio.h:650:52: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  650 | extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
+      |                                                    ^~~~
+/usr/include/stdio.h:692:30: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  692 |                              FILE *__restrict __stream) __wur;
+      |                              ^~~~
+/usr/include/stdio.h:695:28: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  695 |                            FILE *__restrict __stream) __wur;
+      |                            ^~~~
+/usr/include/stdio.h:705:27: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  705 |                           FILE *__restrict __stream) __wur;
+      |                           ^~~~
+/usr/include/stdio.h:713:47: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  713 | extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
+      |                                               ^~~~
+/usr/include/stdio.h:719:12: error: se especificó una clase de almacenamiento para el parámetro ‘puts’
+  719 | extern int puts (const char *__s);
+      |            ^~~~
+/usr/include/stdio.h:726:29: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  726 | extern int ungetc (int __c, FILE *__stream);
+      |                             ^~~~
+/usr/include/stdio.h:734:34: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  734 |                      size_t __n, FILE *__restrict __stream) __wur;
+      |                                  ^~~~
+/usr/include/stdio.h:740:35: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  740 |                       size_t __n, FILE *__restrict __s);
+      |                                   ^~~~
+/usr/include/stdio.h:761:43: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  761 |                               size_t __n, FILE *__restrict __stream) __wur;
+      |                                           ^~~~
+/usr/include/stdio.h:763:44: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  763 |                                size_t __n, FILE *__restrict __stream);
+      |                                            ^~~~
+/usr/include/stdio.h:771:19: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  771 | extern int fseek (FILE *__stream, long int __off, int __whence);
+      |                   ^~~~
+/usr/include/stdio.h:776:24: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  776 | extern long int ftell (FILE *__stream) __wur;
+      |                        ^~~~
+/usr/include/stdio.h:781:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  781 | extern void rewind (FILE *__stream);
+      |                     ^~~~
+/usr/include/stdio.h:794:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  794 | extern int fseeko (FILE *__stream, __off_t __off, int __whence);
+      |                    ^~~~
+/usr/include/stdio.h:799:24: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  799 | extern __off_t ftello (FILE *__stream) __wur;
+      |                        ^~~~
+/usr/include/stdio.h:818:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  818 | extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
+      |                     ^~~~
+/usr/include/stdio.h:818:48: error: nombre de tipo ‘fpos_t’ desconocido
+  818 | extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
+      |                                                ^~~~~~
+/usr/include/stdio.h:129:1: nota: ‘fpos_t’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+  128 | #include <bits/stdio_lim.h>
+  +++ |+#include <stdio.h>
+  129 | 
+/usr/include/stdio.h:823:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  823 | extern int fsetpos (FILE *__stream, const fpos_t *__pos);
+      |                     ^~~~
+/usr/include/stdio.h:823:43: error: nombre de tipo ‘fpos_t’ desconocido
+  823 | extern int fsetpos (FILE *__stream, const fpos_t *__pos);
+      |                                           ^~~~~~
+/usr/include/stdio.h:844:23: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  844 | extern void clearerr (FILE *__stream) __THROW;
+      |                       ^~~~
+/usr/include/stdio.h:846:18: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  846 | extern int feof (FILE *__stream) __THROW __wur;
+      |                  ^~~~
+/usr/include/stdio.h:848:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  848 | extern int ferror (FILE *__stream) __THROW __wur;
+      |                    ^~~~
+/usr/include/stdio.h:852:32: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  852 | extern void clearerr_unlocked (FILE *__stream) __THROW;
+      |                                ^~~~
+/usr/include/stdio.h:853:27: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  853 | extern int feof_unlocked (FILE *__stream) __THROW __wur;
+      |                           ^~~~
+/usr/include/stdio.h:854:29: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  854 | extern int ferror_unlocked (FILE *__stream) __THROW __wur;
+      |                             ^~~~
+/usr/include/stdio.h:862:13: error: se especificó una clase de almacenamiento para el parámetro ‘perror’
+  862 | extern void perror (const char *__s) __COLD;
+      |             ^~~~~~
+/usr/include/stdio.h:867:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  867 | extern int fileno (FILE *__stream) __THROW __wur;
+      |                    ^~~~
+/usr/include/stdio.h:872:29: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  872 | extern int fileno_unlocked (FILE *__stream) __THROW __wur;
+      |                             ^~~~
+/usr/include/stdio.h:881:20: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  881 | extern int pclose (FILE *__stream);
+      |                    ^~~~
+/usr/include/stdio.h:887:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  887 | extern FILE *popen (const char *__command, const char *__modes)
+      |             ^
+/usr/include/stdio.h:895:14: error: se especificó una clase de almacenamiento para el parámetro ‘ctermid’
+  895 | extern char *ctermid (char *__s) __THROW
+      |              ^~~~~~~
+/usr/include/stdio.h:925:24: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  925 | extern void flockfile (FILE *__stream) __THROW;
+      |                        ^~~~
+/usr/include/stdio.h:929:26: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  929 | extern int ftrylockfile (FILE *__stream) __THROW __wur;
+      |                          ^~~~
+/usr/include/stdio.h:932:26: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  932 | extern void funlockfile (FILE *__stream) __THROW;
+      |                          ^~~~
+/usr/include/stdio.h:943:21: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  943 | extern int __uflow (FILE *);
+      |                     ^~~~
+/usr/include/stdio.h:944:24: error: expected declaration specifiers or ‘...’ before ‘FILE’
+  944 | extern int __overflow (FILE *, int);
+      |                        ^~~~
+En el fichero incluido desde server.c:9:
+/usr/include/string.h:43:14: error: se especificó una clase de almacenamiento para el parámetro ‘memcpy’
+   43 | extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
+      |              ^~~~~~
+/usr/include/string.h:47:14: error: se especificó una clase de almacenamiento para el parámetro ‘memmove’
+   47 | extern void *memmove (void *__dest, const void *__src, size_t __n)
+      |              ^~~~~~~
+/usr/include/string.h:54:14: error: se especificó una clase de almacenamiento para el parámetro ‘memccpy’
+   54 | extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
+      |              ^~~~~~~
+/usr/include/string.h:61:14: error: se especificó una clase de almacenamiento para el parámetro ‘memset’
+   61 | extern void *memset (void *__s, int __c, size_t __n) __THROW __nonnull ((1));
+      |              ^~~~~~
+/usr/include/string.h:64:12: error: se especificó una clase de almacenamiento para el parámetro ‘memcmp’
+   64 | extern int memcmp (const void *__s1, const void *__s2, size_t __n)
+      |            ^~~~~~
+/usr/include/string.h:80:12: error: se especificó una clase de almacenamiento para el parámetro ‘__memcmpeq’
+   80 | extern int __memcmpeq (const void *__s1, const void *__s2, size_t __n)
+      |            ^~~~~~~~~~
+/usr/include/string.h:107:14: error: se especificó una clase de almacenamiento para el parámetro ‘memchr’
+  107 | extern void *memchr (const void *__s, int __c, size_t __n)
+      |              ^~~~~~
+/usr/include/string.h:141:14: error: se especificó una clase de almacenamiento para el parámetro ‘strcpy’
+  141 | extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+/usr/include/string.h:144:14: error: se especificó una clase de almacenamiento para el parámetro ‘strncpy’
+  144 | extern char *strncpy (char *__restrict __dest,
+      |              ^~~~~~~
+/usr/include/string.h:149:14: error: se especificó una clase de almacenamiento para el parámetro ‘strcat’
+  149 | extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+/usr/include/string.h:152:14: error: se especificó una clase de almacenamiento para el parámetro ‘strncat’
+  152 | extern char *strncat (char *__restrict __dest, const char *__restrict __src,
+      |              ^~~~~~~
+/usr/include/string.h:156:12: error: se especificó una clase de almacenamiento para el parámetro ‘strcmp’
+  156 | extern int strcmp (const char *__s1, const char *__s2)
+      |            ^~~~~~
+/usr/include/string.h:159:12: error: se especificó una clase de almacenamiento para el parámetro ‘strncmp’
+  159 | extern int strncmp (const char *__s1, const char *__s2, size_t __n)
+      |            ^~~~~~~
+/usr/include/string.h:163:12: error: se especificó una clase de almacenamiento para el parámetro ‘strcoll’
+  163 | extern int strcoll (const char *__s1, const char *__s2)
+      |            ^~~~~~~
+/usr/include/string.h:166:15: error: se especificó una clase de almacenamiento para el parámetro ‘strxfrm’
+  166 | extern size_t strxfrm (char *__restrict __dest,
+      |               ^~~~~~~
+En el fichero incluido desde /usr/include/bits/types/locale_t.h:22,
+                 desde /usr/include/string.h:172:
+/usr/include/bits/types/__locale_t.h:41:33: error: se especificó una clase de almacenamiento para el parámetro ‘__locale_t’
+   41 | typedef struct __locale_struct *__locale_t;
+      |                                 ^~~~~~~~~~
+/usr/include/bits/types/locale_t.h:24:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘locale_t’
+   24 | typedef __locale_t locale_t;
+      |                    ^~~~~~~~
+/usr/include/string.h:175:59: error: nombre de tipo ‘locale_t’ desconocido
+  175 | extern int strcoll_l (const char *__s1, const char *__s2, locale_t __l)
+      |                                                           ^~~~~~~~
+/usr/include/string.h:180:26: error: nombre de tipo ‘locale_t’ desconocido
+  180 |                          locale_t __l) __THROW __nonnull ((2, 4))
+      |                          ^~~~~~~~
+/usr/include/string.h:187:14: error: se especificó una clase de almacenamiento para el parámetro ‘strdup’
+  187 | extern char *strdup (const char *__s)
+      |              ^~~~~~
+/usr/include/string.h:195:14: error: se especificó una clase de almacenamiento para el parámetro ‘strndup’
+  195 | extern char *strndup (const char *__string, size_t __n)
+      |              ^~~~~~~
+/usr/include/string.h:246:14: error: se especificó una clase de almacenamiento para el parámetro ‘strchr’
+  246 | extern char *strchr (const char *__s, int __c)
+      |              ^~~~~~
+/usr/include/string.h:273:14: error: se especificó una clase de almacenamiento para el parámetro ‘strrchr’
+  273 | extern char *strrchr (const char *__s, int __c)
+      |              ^~~~~~~
+/usr/include/string.h:286:14: error: se especificó una clase de almacenamiento para el parámetro ‘strchrnul’
+  286 | extern char *strchrnul (const char *__s, int __c)
+      |              ^~~~~~~~~
+/usr/include/string.h:293:15: error: se especificó una clase de almacenamiento para el parámetro ‘strcspn’
+  293 | extern size_t strcspn (const char *__s, const char *__reject)
+      |               ^~~~~~~
+/usr/include/string.h:297:15: error: se especificó una clase de almacenamiento para el parámetro ‘strspn’
+  297 | extern size_t strspn (const char *__s, const char *__accept)
+      |               ^~~~~~
+/usr/include/string.h:323:14: error: se especificó una clase de almacenamiento para el parámetro ‘strpbrk’
+  323 | extern char *strpbrk (const char *__s, const char *__accept)
+      |              ^~~~~~~
+/usr/include/string.h:350:14: error: se especificó una clase de almacenamiento para el parámetro ‘strstr’
+  350 | extern char *strstr (const char *__haystack, const char *__needle)
+      |              ^~~~~~
+/usr/include/string.h:356:14: error: se especificó una clase de almacenamiento para el parámetro ‘strtok’
+  356 | extern char *strtok (char *__restrict __s, const char *__restrict __delim)
+      |              ^~~~~~
+/usr/include/string.h:361:14: error: se especificó una clase de almacenamiento para el parámetro ‘__strtok_r’
+  361 | extern char *__strtok_r (char *__restrict __s,
+      |              ^~~~~~~~~~
+/usr/include/string.h:366:14: error: se especificó una clase de almacenamiento para el parámetro ‘strtok_r’
+  366 | extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
+      |              ^~~~~~~~
+/usr/include/string.h:380:14: error: se especificó una clase de almacenamiento para el parámetro ‘strcasestr’
+  380 | extern char *strcasestr (const char *__haystack, const char *__needle)
+      |              ^~~~~~~~~~
+/usr/include/string.h:389:14: error: se especificó una clase de almacenamiento para el parámetro ‘memmem’
+  389 | extern void *memmem (const void *__haystack, size_t __haystacklen,
+      |              ^~~~~~
+/usr/include/string.h:397:14: error: se especificó una clase de almacenamiento para el parámetro ‘__mempcpy’
+  397 | extern void *__mempcpy (void *__restrict __dest,
+      |              ^~~~~~~~~
+/usr/include/string.h:400:14: error: se especificó una clase de almacenamiento para el parámetro ‘mempcpy’
+  400 | extern void *mempcpy (void *__restrict __dest,
+      |              ^~~~~~~
+/usr/include/string.h:407:15: error: se especificó una clase de almacenamiento para el parámetro ‘strlen’
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+/usr/include/string.h:413:15: error: se especificó una clase de almacenamiento para el parámetro ‘strnlen’
+  413 | extern size_t strnlen (const char *__string, size_t __maxlen)
+      |               ^~~~~~~
+/usr/include/string.h:419:14: error: se especificó una clase de almacenamiento para el parámetro ‘strerror’
+  419 | extern char *strerror (int __errnum) __THROW;
+      |              ^~~~~~~~
+/usr/include/string.h:432:12: error: se especificó una clase de almacenamiento para el parámetro ‘strerror_r’
+  432 | extern int __REDIRECT_NTH (strerror_r,
+      |            ^~~~~~~~~~~~~~
+/usr/include/string.h:458:40: error: nombre de tipo ‘locale_t’ desconocido
+  458 | extern char *strerror_l (int __errnum, locale_t __l) __THROW;
+      |                                        ^~~~~~~~
+En el fichero incluido desde /usr/include/string.h:462:
+/usr/include/strings.h:34:12: error: se especificó una clase de almacenamiento para el parámetro ‘bcmp’
+   34 | extern int bcmp (const void *__s1, const void *__s2, size_t __n)
+      |            ^~~~
+/usr/include/strings.h:38:13: error: se especificó una clase de almacenamiento para el parámetro ‘bcopy’
+   38 | extern void bcopy (const void *__src, void *__dest, size_t __n)
+      |             ^~~~~
+/usr/include/strings.h:42:13: error: se especificó una clase de almacenamiento para el parámetro ‘bzero’
+   42 | extern void bzero (void *__s, size_t __n) __THROW __nonnull ((1));
+      |             ^~~~~
+/usr/include/strings.h:68:14: error: se especificó una clase de almacenamiento para el parámetro ‘index’
+   68 | extern char *index (const char *__s, int __c)
+      |              ^~~~~
+/usr/include/strings.h:96:14: error: se especificó una clase de almacenamiento para el parámetro ‘rindex’
+   96 | extern char *rindex (const char *__s, int __c)
+      |              ^~~~~~
+/usr/include/strings.h:104:12: error: se especificó una clase de almacenamiento para el parámetro ‘ffs’
+  104 | extern int ffs (int __i) __THROW __attribute_const__;
+      |            ^~~
+/usr/include/strings.h:110:12: error: se especificó una clase de almacenamiento para el parámetro ‘ffsl’
+  110 | extern int ffsl (long int __l) __THROW __attribute_const__;
+      |            ^~~~
+/usr/include/strings.h:111:1: error: expected declaration specifiers before ‘__extension__’
+  111 | __extension__ extern int ffsll (long long int __ll)
+      | ^~~~~~~~~~~~~
+/usr/include/strings.h:116:12: error: se especificó una clase de almacenamiento para el parámetro ‘strcasecmp’
+  116 | extern int strcasecmp (const char *__s1, const char *__s2)
+      |            ^~~~~~~~~~
+/usr/include/strings.h:120:12: error: se especificó una clase de almacenamiento para el parámetro ‘strncasecmp’
+  120 | extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
+      |            ^~~~~~~~~~~
+/usr/include/strings.h:128:62: error: nombre de tipo ‘locale_t’ desconocido
+  128 | extern int strcasecmp_l (const char *__s1, const char *__s2, locale_t __loc)
+      |                                                              ^~~~~~~~
+/usr/include/strings.h:134:39: error: nombre de tipo ‘locale_t’ desconocido
+  134 |                           size_t __n, locale_t __loc)
+      |                                       ^~~~~~~~
+/usr/include/string.h:466:13: error: se especificó una clase de almacenamiento para el parámetro ‘explicit_bzero’
+  466 | extern void explicit_bzero (void *__s, size_t __n) __THROW __nonnull ((1))
+      |             ^~~~~~~~~~~~~~
+/usr/include/string.h:471:14: error: se especificó una clase de almacenamiento para el parámetro ‘strsep’
+  471 | extern char *strsep (char **__restrict __stringp,
+      |              ^~~~~~
+/usr/include/string.h:478:14: error: se especificó una clase de almacenamiento para el parámetro ‘strsignal’
+  478 | extern char *strsignal (int __sig) __THROW;
+      |              ^~~~~~~~~
+/usr/include/string.h:489:14: error: se especificó una clase de almacenamiento para el parámetro ‘__stpcpy’
+  489 | extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~~~
+/usr/include/string.h:491:14: error: se especificó una clase de almacenamiento para el parámetro ‘stpcpy’
+  491 | extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+/usr/include/string.h:496:14: error: se especificó una clase de almacenamiento para el parámetro ‘__stpncpy’
+  496 | extern char *__stpncpy (char *__restrict __dest,
+      |              ^~~~~~~~~
+/usr/include/string.h:499:14: error: se especificó una clase de almacenamiento para el parámetro ‘stpncpy’
+  499 | extern char *stpncpy (char *__restrict __dest,
+      |              ^~~~~~~
+/usr/include/string.h:506:15: error: se especificó una clase de almacenamiento para el parámetro ‘strlcpy’
+  506 | extern size_t strlcpy (char *__restrict __dest,
+      |               ^~~~~~~
+/usr/include/string.h:512:15: error: se especificó una clase de almacenamiento para el parámetro ‘strlcat’
+  512 | extern size_t strlcat (char *__restrict __dest,
+      |               ^~~~~~~
+En el fichero incluido desde server.c:13:
+/usr/include/unistd.h:255:22: error: se especificó una clase de almacenamiento para el parámetro ‘useconds_t’
+  255 | typedef __useconds_t useconds_t;
+      |                      ^~~~~~~~~~
+/usr/include/unistd.h:267:20: error: se especificó una clase de almacenamiento para el parámetro ‘intptr_t’
+  267 | typedef __intptr_t intptr_t;
+      |                    ^~~~~~~~
+/usr/include/unistd.h:287:12: error: se especificó una clase de almacenamiento para el parámetro ‘access’
+  287 | extern int access (const char *__name, int __type) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:309:12: error: se especificó una clase de almacenamiento para el parámetro ‘faccessat’
+  309 | extern int faccessat (int __fd, const char *__file, int __type, int __flag)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:339:16: error: se especificó una clase de almacenamiento para el parámetro ‘lseek’
+  339 | extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:358:12: error: se especificó una clase de almacenamiento para el parámetro ‘close’
+  358 | extern int close (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:363:13: error: se especificó una clase de almacenamiento para el parámetro ‘closefrom’
+  363 | extern void closefrom (int __lowfd) __THROW;
+      |             ^~~~~~~~~
+/usr/include/unistd.h:371:16: error: se especificó una clase de almacenamiento para el parámetro ‘read’
+  371 | extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur
+      |                ^~~~
+/usr/include/unistd.h:378:16: error: se especificó una clase de almacenamiento para el parámetro ‘write’
+  378 | extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur
+      |                ^~~~~
+/usr/include/unistd.h:389:16: error: se especificó una clase de almacenamiento para el parámetro ‘pread’
+  389 | extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,
+      |                ^~~~~
+/usr/include/unistd.h:398:16: error: se especificó una clase de almacenamiento para el parámetro ‘pwrite’
+  398 | extern ssize_t pwrite (int __fd, const void *__buf, size_t __n,
+      |                ^~~~~~
+/usr/include/unistd.h:437:12: error: se especificó una clase de almacenamiento para el parámetro ‘pipe’
+  437 | extern int pipe (int __pipedes[2]) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:452:21: error: se especificó una clase de almacenamiento para el parámetro ‘alarm’
+  452 | extern unsigned int alarm (unsigned int __seconds) __THROW;
+      |                     ^~~~~
+/usr/include/unistd.h:464:21: error: se especificó una clase de almacenamiento para el parámetro ‘sleep’
+  464 | extern unsigned int sleep (unsigned int __seconds);
+      |                     ^~~~~
+/usr/include/unistd.h:472:21: error: se especificó una clase de almacenamiento para el parámetro ‘ualarm’
+  472 | extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
+      |                     ^~~~~~
+/usr/include/unistd.h:480:12: error: se especificó una clase de almacenamiento para el parámetro ‘usleep’
+  480 | extern int usleep (__useconds_t __useconds);
+      |            ^~~~~~
+/usr/include/unistd.h:489:12: error: se especificó una clase de almacenamiento para el parámetro ‘pause’
+  489 | extern int pause (void);
+      |            ^~~~~
+/usr/include/unistd.h:493:12: error: se especificó una clase de almacenamiento para el parámetro ‘chown’
+  493 | extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~
+/usr/include/unistd.h:498:12: error: se especificó una clase de almacenamiento para el parámetro ‘fchown’
+  498 | extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:503:12: error: se especificó una clase de almacenamiento para el parámetro ‘lchown’
+  503 | extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~~
+/usr/include/unistd.h:511:12: error: se especificó una clase de almacenamiento para el parámetro ‘fchownat’
+  511 | extern int fchownat (int __fd, const char *__file, __uid_t __owner,
+      |            ^~~~~~~~
+/usr/include/unistd.h:517:12: error: se especificó una clase de almacenamiento para el parámetro ‘chdir’
+  517 | extern int chdir (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:521:12: error: se especificó una clase de almacenamiento para el parámetro ‘fchdir’
+  521 | extern int fchdir (int __fd) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:531:14: error: se especificó una clase de almacenamiento para el parámetro ‘getcwd’
+  531 | extern char *getcwd (char *__buf, size_t __size) __THROW __wur;
+      |              ^~~~~~
+/usr/include/unistd.h:545:14: error: se especificó una clase de almacenamiento para el parámetro ‘getwd’
+  545 | extern char *getwd (char *__buf)
+      |              ^~~~~
+/usr/include/unistd.h:552:12: error: se especificó una clase de almacenamiento para el parámetro ‘dup’
+  552 | extern int dup (int __fd) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:555:12: error: se especificó una clase de almacenamiento para el parámetro ‘dup2’
+  555 | extern int dup2 (int __fd, int __fd2) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:564:15: error: se especificó una clase de almacenamiento para el parámetro ‘__environ’
+  564 | extern char **__environ;
+      |               ^~~~~~~~~
+/usr/include/unistd.h:572:12: error: se especificó una clase de almacenamiento para el parámetro ‘execve’
+  572 | extern int execve (const char *__path, char *const __argv[],
+      |            ^~~~~~
+/usr/include/unistd.h:578:12: error: se especificó una clase de almacenamiento para el parámetro ‘fexecve’
+  578 | extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
+      |            ^~~~~~~
+/usr/include/unistd.h:584:12: error: se especificó una clase de almacenamiento para el parámetro ‘execv’
+  584 | extern int execv (const char *__path, char *const __argv[])
+      |            ^~~~~
+/usr/include/unistd.h:589:12: error: se especificó una clase de almacenamiento para el parámetro ‘execle’
+  589 | extern int execle (const char *__path, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:594:12: error: se especificó una clase de almacenamiento para el parámetro ‘execl’
+  594 | extern int execl (const char *__path, const char *__arg, ...)
+      |            ^~~~~
+/usr/include/unistd.h:599:12: error: se especificó una clase de almacenamiento para el parámetro ‘execvp’
+  599 | extern int execvp (const char *__file, char *const __argv[])
+      |            ^~~~~~
+/usr/include/unistd.h:605:12: error: se especificó una clase de almacenamiento para el parámetro ‘execlp’
+  605 | extern int execlp (const char *__file, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:619:12: error: se especificó una clase de almacenamiento para el parámetro ‘nice’
+  619 | extern int nice (int __inc) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:624:13: error: se especificó una clase de almacenamiento para el parámetro ‘_exit’
+  624 | extern void _exit (int __status) __attribute__ ((__noreturn__));
+      |             ^~~~~
+/usr/include/unistd.h:633:17: error: se especificó una clase de almacenamiento para el parámetro ‘pathconf’
+  633 | extern long int pathconf (const char *__path, int __name)
+      |                 ^~~~~~~~
+/usr/include/unistd.h:637:17: error: se especificó una clase de almacenamiento para el parámetro ‘fpathconf’
+  637 | extern long int fpathconf (int __fd, int __name) __THROW;
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:640:17: error: se especificó una clase de almacenamiento para el parámetro ‘sysconf’
+  640 | extern long int sysconf (int __name) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:644:15: error: se especificó una clase de almacenamiento para el parámetro ‘confstr’
+  644 | extern size_t confstr (int __name, char *__buf, size_t __len) __THROW
+      |               ^~~~~~~
+/usr/include/unistd.h:650:16: error: se especificó una clase de almacenamiento para el parámetro ‘getpid’
+  650 | extern __pid_t getpid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:653:16: error: se especificó una clase de almacenamiento para el parámetro ‘getppid’
+  653 | extern __pid_t getppid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:656:16: error: se especificó una clase de almacenamiento para el parámetro ‘getpgrp’
+  656 | extern __pid_t getpgrp (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:659:16: error: se especificó una clase de almacenamiento para el parámetro ‘__getpgid’
+  659 | extern __pid_t __getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:661:16: error: se especificó una clase de almacenamiento para el parámetro ‘getpgid’
+  661 | extern __pid_t getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:668:12: error: se especificó una clase de almacenamiento para el parámetro ‘setpgid’
+  668 | extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:682:12: error: se especificó una clase de almacenamiento para el parámetro ‘setpgrp’
+  682 | extern int setpgrp (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:689:16: error: se especificó una clase de almacenamiento para el parámetro ‘setsid’
+  689 | extern __pid_t setsid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:693:16: error: se especificó una clase de almacenamiento para el parámetro ‘getsid’
+  693 | extern __pid_t getsid (__pid_t __pid) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:697:16: error: se especificó una clase de almacenamiento para el parámetro ‘getuid’
+  697 | extern __uid_t getuid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:700:16: error: se especificó una clase de almacenamiento para el parámetro ‘geteuid’
+  700 | extern __uid_t geteuid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:703:16: error: se especificó una clase de almacenamiento para el parámetro ‘getgid’
+  703 | extern __gid_t getgid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:706:16: error: se especificó una clase de almacenamiento para el parámetro ‘getegid’
+  706 | extern __gid_t getegid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:711:12: error: se especificó una clase de almacenamiento para el parámetro ‘getgroups’
+  711 | extern int getgroups (int __size, __gid_t __list[]) __THROW __wur
+      |            ^~~~~~~~~
+/usr/include/unistd.h:722:12: error: se especificó una clase de almacenamiento para el parámetro ‘setuid’
+  722 | extern int setuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:727:12: error: se especificó una clase de almacenamiento para el parámetro ‘setreuid’
+  727 | extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:732:12: error: se especificó una clase de almacenamiento para el parámetro ‘seteuid’
+  732 | extern int seteuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:739:12: error: se especificó una clase de almacenamiento para el parámetro ‘setgid’
+  739 | extern int setgid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:744:12: error: se especificó una clase de almacenamiento para el parámetro ‘setregid’
+  744 | extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:749:12: error: se especificó una clase de almacenamiento para el parámetro ‘setegid’
+  749 | extern int setegid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:778:16: error: se especificó una clase de almacenamiento para el parámetro ‘fork’
+  778 | extern __pid_t fork (void) __THROWNL;
+      |                ^~~~
+/usr/include/unistd.h:786:16: error: se especificó una clase de almacenamiento para el parámetro ‘vfork’
+  786 | extern __pid_t vfork (void) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:799:14: error: se especificó una clase de almacenamiento para el parámetro ‘ttyname’
+  799 | extern char *ttyname (int __fd) __THROW;
+      |              ^~~~~~~
+/usr/include/unistd.h:803:12: error: se especificó una clase de almacenamiento para el parámetro ‘ttyname_r’
+  803 | extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:809:12: error: se especificó una clase de almacenamiento para el parámetro ‘isatty’
+  809 | extern int isatty (int __fd) __THROW;
+      |            ^~~~~~
+/usr/include/unistd.h:814:12: error: se especificó una clase de almacenamiento para el parámetro ‘ttyslot’
+  814 | extern int ttyslot (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:819:12: error: se especificó una clase de almacenamiento para el parámetro ‘link’
+  819 | extern int link (const char *__from, const char *__to)
+      |            ^~~~
+/usr/include/unistd.h:825:12: error: se especificó una clase de almacenamiento para el parámetro ‘linkat’
+  825 | extern int linkat (int __fromfd, const char *__from, int __tofd,
+      |            ^~~~~~
+/usr/include/unistd.h:832:12: error: se especificó una clase de almacenamiento para el parámetro ‘symlink’
+  832 | extern int symlink (const char *__from, const char *__to)
+      |            ^~~~~~~
+/usr/include/unistd.h:838:16: error: se especificó una clase de almacenamiento para el parámetro ‘readlink’
+  838 | extern ssize_t readlink (const char *__restrict __path,
+      |                ^~~~~~~~
+/usr/include/unistd.h:847:12: error: se especificó una clase de almacenamiento para el parámetro ‘symlinkat’
+  847 | extern int symlinkat (const char *__from, int __tofd,
+      |            ^~~~~~~~~
+/usr/include/unistd.h:851:16: error: se especificó una clase de almacenamiento para el parámetro ‘readlinkat’
+  851 | extern ssize_t readlinkat (int __fd, const char *__restrict __path,
+      |                ^~~~~~~~~~
+/usr/include/unistd.h:858:12: error: se especificó una clase de almacenamiento para el parámetro ‘unlink’
+  858 | extern int unlink (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:862:12: error: se especificó una clase de almacenamiento para el parámetro ‘unlinkat’
+  862 | extern int unlinkat (int __fd, const char *__name, int __flag)
+      |            ^~~~~~~~
+/usr/include/unistd.h:867:12: error: se especificó una clase de almacenamiento para el parámetro ‘rmdir’
+  867 | extern int rmdir (const char *__path) __THROW __nonnull ((1));
+      |            ^~~~~
+/usr/include/unistd.h:871:16: error: se especificó una clase de almacenamiento para el parámetro ‘tcgetpgrp’
+  871 | extern __pid_t tcgetpgrp (int __fd) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:874:12: error: se especificó una clase de almacenamiento para el parámetro ‘tcsetpgrp’
+  874 | extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __THROW;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:881:14: error: se especificó una clase de almacenamiento para el parámetro ‘getlogin’
+  881 | extern char *getlogin (void);
+      |              ^~~~~~~~
+/usr/include/unistd.h:889:12: error: se especificó una clase de almacenamiento para el parámetro ‘getlogin_r’
+  889 | extern int getlogin_r (char *__name, size_t __name_len) __nonnull ((1))
+      |            ^~~~~~~~~~
+/usr/include/unistd.h:895:12: error: se especificó una clase de almacenamiento para el parámetro ‘setlogin’
+  895 | extern int setlogin (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~~~
+En el fichero incluido desde /usr/include/bits/getopt_posix.h:27,
+                 desde /usr/include/unistd.h:903:
+/usr/include/bits/getopt_core.h:36:14: error: se especificó una clase de almacenamiento para el parámetro ‘optarg’
+   36 | extern char *optarg;
+      |              ^~~~~~
+/usr/include/bits/getopt_core.h:50:12: error: se especificó una clase de almacenamiento para el parámetro ‘optind’
+   50 | extern int optind;
+      |            ^~~~~~
+/usr/include/bits/getopt_core.h:55:12: error: se especificó una clase de almacenamiento para el parámetro ‘opterr’
+   55 | extern int opterr;
+      |            ^~~~~~
+/usr/include/bits/getopt_core.h:59:12: error: se especificó una clase de almacenamiento para el parámetro ‘optopt’
+   59 | extern int optopt;
+      |            ^~~~~~
+/usr/include/bits/getopt_core.h:91:12: error: se especificó una clase de almacenamiento para el parámetro ‘getopt’
+   91 | extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
+      |            ^~~~~~
+/usr/include/unistd.h:911:12: error: se especificó una clase de almacenamiento para el parámetro ‘gethostname’
+  911 | extern int gethostname (char *__name, size_t __len) __THROW __nonnull ((1))
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:919:12: error: se especificó una clase de almacenamiento para el parámetro ‘sethostname’
+  919 | extern int sethostname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:924:12: error: se especificó una clase de almacenamiento para el parámetro ‘sethostid’
+  924 | extern int sethostid (long int __id) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:930:12: error: se especificó una clase de almacenamiento para el parámetro ‘getdomainname’
+  930 | extern int getdomainname (char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:933:12: error: se especificó una clase de almacenamiento para el parámetro ‘setdomainname’
+  933 | extern int setdomainname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:939:12: error: se especificó una clase de almacenamiento para el parámetro ‘vhangup’
+  939 | extern int vhangup (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:942:12: error: se especificó una clase de almacenamiento para el parámetro ‘revoke’
+  942 | extern int revoke (const char *__file) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:950:12: error: se especificó una clase de almacenamiento para el parámetro ‘profil’
+  950 | extern int profil (unsigned short int *__sample_buffer, size_t __size,
+      |            ^~~~~~
+/usr/include/unistd.h:958:12: error: se especificó una clase de almacenamiento para el parámetro ‘acct’
+  958 | extern int acct (const char *__name) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:962:14: error: se especificó una clase de almacenamiento para el parámetro ‘getusershell’
+  962 | extern char *getusershell (void) __THROW;
+      |              ^~~~~~~~~~~~
+/usr/include/unistd.h:963:13: error: se especificó una clase de almacenamiento para el parámetro ‘endusershell’
+  963 | extern void endusershell (void) __THROW; /* Discard cached info.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:964:13: error: se especificó una clase de almacenamiento para el parámetro ‘setusershell’
+  964 | extern void setusershell (void) __THROW; /* Rewind and re-read the file.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:970:12: error: se especificó una clase de almacenamiento para el parámetro ‘daemon’
+  970 | extern int daemon (int __nochdir, int __noclose) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:977:12: error: se especificó una clase de almacenamiento para el parámetro ‘chroot’
+  977 | extern int chroot (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:981:14: error: se especificó una clase de almacenamiento para el parámetro ‘getpass’
+  981 | extern char *getpass (const char *__prompt) __nonnull ((1));
+      |              ^~~~~~~
+/usr/include/unistd.h:989:12: error: se especificó una clase de almacenamiento para el parámetro ‘fsync’
+  989 | extern int fsync (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:1002:17: error: se especificó una clase de almacenamiento para el parámetro ‘gethostid’
+ 1002 | extern long int gethostid (void);
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:1005:13: error: se especificó una clase de almacenamiento para el parámetro ‘sync’
+ 1005 | extern void sync (void) __THROW;
+      |             ^~~~
+/usr/include/unistd.h:1011:12: error: se especificó una clase de almacenamiento para el parámetro ‘getpagesize’
+ 1011 | extern int getpagesize (void)  __THROW __attribute__ ((__const__));
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:1016:12: error: se especificó una clase de almacenamiento para el parámetro ‘getdtablesize’
+ 1016 | extern int getdtablesize (void) __THROW;
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:1026:12: error: se especificó una clase de almacenamiento para el parámetro ‘truncate’
+ 1026 | extern int truncate (const char *__file, __off_t __length)
+      |            ^~~~~~~~
+/usr/include/unistd.h:1049:12: error: se especificó una clase de almacenamiento para el parámetro ‘ftruncate’
+ 1049 | extern int ftruncate (int __fd, __off_t __length) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1070:12: error: se especificó una clase de almacenamiento para el parámetro ‘brk’
+ 1070 | extern int brk (void *__addr) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:1076:20: error: expected declaration specifiers or ‘...’ before ‘intptr_t’
+ 1076 | extern void *sbrk (intptr_t __delta) __THROW;
+      |                    ^~~~~~~~
+/usr/include/unistd.h:1091:17: error: se especificó una clase de almacenamiento para el parámetro ‘syscall’
+ 1091 | extern long int syscall (long int __sysno, ...) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:1114:12: error: se especificó una clase de almacenamiento para el parámetro ‘lockf’
+ 1114 | extern int lockf (int __fd, int __cmd, __off_t __len) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:1150:12: error: se especificó una clase de almacenamiento para el parámetro ‘fdatasync’
+ 1150 | extern int fdatasync (int __fildes);
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1159:14: error: se especificó una clase de almacenamiento para el parámetro ‘crypt’
+ 1159 | extern char *crypt (const char *__key, const char *__salt)
+      |              ^~~~~
+server.c:16:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   16 | {
+      | ^
+server.c:226:1: error: expected declaration specifiers before ‘return’
+  226 | return 0;
+      | ^~~~~~
+server.c:227:1: error: expected declaration specifiers before ‘}’ token
+  227 | }
+      | ^
+serverUtils.h:18:6: error: declaraciones de parámetros de estilo antiguo en la definición de una función prototipo
+   18 | void signalHandler(int signum)
+      |      ^~~~~~~~~~~~~
+server.c:228: error: expected ‘{’ at end of input
