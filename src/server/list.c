@@ -86,7 +86,7 @@ int findPlayerByName(List *head, char *name)
     }
     return 0;
 }
-Player *assingGame(List *head)
+Player *assingPlayer(List *head)
 {
     List *aux = head;
     while (aux != NULL)

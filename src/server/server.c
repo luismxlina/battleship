@@ -264,8 +264,46 @@ int main()
                                         strcpy(buffer, "-Err. Instrucción no válida\n");
                                     }
                                     send(i, buffer, sizeof(buffer), 0);
-                                } else if (playerStatus == 1) {
-                                    if(strcmp(instruction))
+                                }
+                                else if (playerStatus == 1)
+                                {
+                                    if (strcmp(instruction, "PASSWORD") == 0)
+                                    {
+                                        if ((instruction = strtok(NULL, "\0")) != NULL)
+                                        {
+                                            if (checkCredentials(FILENAME, currentPlayer->name, instruction) == 1)
+                                            {
+                                                currentPlayer->status = 2;
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+OK. Usuario validado\n");
+                                            }
+                                            else
+                                            {
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "-Err. Error en la validación\n");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Instrucción no válida\n");
+                                        }
+                                    } else {
+                                        bzero(buffer, sizeof(buffer));
+                                        strcpy(buffer, "-Err. Instrucción no válida\n");
+                                    }
+                                    send(i, buffer, sizeof(buffer), 0);
+                                } else if(playerStatus == 2) {
+                                    if(strcmp(instruction, "INICIAR-PARTIDA") == 0) {
+                                        Player* rival = assignPlayer(players);
+                                        if(numGames < MAX_GAMES) {
+                                            if (rival != NULL) {
+                                                numGames++;
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+Ok. Empieza la partida");
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             // Si el cliente introdujo ctrl+c

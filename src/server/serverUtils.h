@@ -11,6 +11,7 @@
 #define PORT 2000
 #define MSG_SIZE 1000
 #define MAX_CLIENTS 50
+#define MAX_GAMES
 #define FILENAME "usuarios.dat"
 
 // Estructura para representar un cliente

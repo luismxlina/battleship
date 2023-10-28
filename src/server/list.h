@@ -9,7 +9,7 @@ void removeItem(List **head, int sd);
 int listSize(List *head);
 Player *getPlayer(List *head, int sd);
 int findPlayerByName(List *head, char *name);
-Player *assingGame(List *head);
+Player *assingPlayer(List *head);
 void printList(List *head);
 
 #endif
