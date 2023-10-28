@@ -57,10 +57,13 @@ void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list)
     char buffer[MSG_SIZE];
     if (player->status == 4)
     {
-        Player* rival;
-        if(player->game->player1->socket != socket) {
+        Player *rival;
+        if (player->game->player1->socket != socket)
+        {
             rival = player->game->player1;
-        } else {
+        }
+        else
+        {
             rival = player->game->player2;
         }
         bzero(buffer, sizeof(buffer));
@@ -71,6 +74,12 @@ void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list)
         free(rival->game);
         rival->game = NULL;
     }
+    removePlayer(list, socket);
+    close(socket);
+    FD_CLR(socket, readfds);
+    (*numClientes)--;
+    bzero(buffer, sizeof(buffer));
+    sprintf(buffer, "+Ok. Desconexión del cliente: %d\n", socket);
 }
 
 void signalHandler(int signum)
