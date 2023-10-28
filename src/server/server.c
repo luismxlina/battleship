@@ -1,6 +1,7 @@
 #include "auth.h"
 #include "list.h"
 #include "serverUtils.h"
+#include "game.h"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
@@ -99,7 +100,7 @@ int main()
                                 Player *newPlayer = initializePlayer(clientSocket);
                                 pushBack(&players, newPlayer);
                                 numClients++;
-                                printf("Nuev jugador conectado: %d/%d\n", clientSocket, numClients);
+                                printf("Nuevo jugador conectado: %d/%d\n", clientSocket, numClients);
                                 FD_SET(clientSocket, &readfds);
 
                                 strcpy(buffer, "+Ok. Usuario conectado\n");
@@ -288,19 +289,32 @@ int main()
                                             bzero(buffer, sizeof(buffer));
                                             strcpy(buffer, "-Err. Instrucción no válida\n");
                                         }
-                                    } else {
+                                    }
+                                    else
+                                    {
                                         bzero(buffer, sizeof(buffer));
                                         strcpy(buffer, "-Err. Instrucción no válida\n");
                                     }
                                     send(i, buffer, sizeof(buffer), 0);
-                                } else if(playerStatus == 2) {
-                                    if(strcmp(instruction, "INICIAR-PARTIDA") == 0) {
-                                        Player* rival = assignPlayer(players);
-                                        if(numGames < MAX_GAMES) {
-                                            if (rival != NULL) {
+                                }
+                                else if (playerStatus == 2)
+                                {
+                                    if (strcmp(instruction, "INICIAR-PARTIDA") == 0)
+                                    {
+                                        Player *rival = assignPlayer(players);
+                                        if (numGames < MAX_GAMES)
+                                        {
+                                            if (rival != NULL)
+                                            {
                                                 numGames++;
                                                 bzero(buffer, sizeof(buffer));
+                                                char* msg1 = buffer, msg2 = buffer;
                                                 strcpy(buffer, "+Ok. Empieza la partida");
+                                                initializeGame(currentPlayer, rival, msg1, msg2);
+                                                send(currentPlayer->socket, msg1, sizeof(msg1), 0);
+                                                send(rival->socket, msg2, sizeof(msg2), 0);
+
+                                                bzero
                                             }
                                         }
                                     }
@@ -311,7 +325,7 @@ int main()
                             {
                                 printf("El socket %d, ha introducido ctrl+c\n", i);
                                 // Eliminar ese socket
-                                exitClient(i, &readfds, &numClients, clients);
+                                exitClient(i, &readfds, &numClients, &players);
                             }
                         }
                     }

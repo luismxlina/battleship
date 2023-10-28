@@ -49,3 +49,23 @@ bool hasPlayerWon(Board *opponentBoard)
     }
     return true; // Si no se encontraron barcos en el tablero del oponente, el jugador ha ganado
 }
+
+void inicializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
+{
+    Game *game = (Game *)malloc(sizeof(Game)); // Se crea la estructura del juego
+    generateBoard(&game->board1);             // Se genera el tablero del jugador 1 (el que inicia)
+    generateBoard(&game->board2);            // Se genera el tablero del jugador 2 (el que responde)
+
+    boardToString(&game->board1, msg1); // Se convierte el tablero del jugador 1 a una cadena
+    boardToString(&game->board2, msg2); // Se convierte el tablero del jugador 2 a una cadena
+
+    player1->status = 4; // Se cambia el estado del jugador 1 a jugando
+    player1->game = game; // Se asigna el juego al jugador 1
+
+    player2->status = 4;
+    player2->game = game;
+
+    game->player1 = player1;
+    game->player2 = player2;
+    game->turn = 1;
+}
