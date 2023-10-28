@@ -1,7 +1,7 @@
 #include "auth.h"
+#include "game.h"
 #include "list.h"
 #include "serverUtils.h"
-#include "game.h"
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
@@ -308,17 +308,49 @@ int main()
                                             {
                                                 numGames++;
                                                 bzero(buffer, sizeof(buffer));
-                                                char* msg1 = buffer, msg2 = buffer;
+                                                char *msg1 = buffer, msg2 = buffer;
                                                 strcpy(buffer, "+Ok. Empieza la partida");
                                                 initializeGame(currentPlayer, rival, msg1, msg2);
                                                 send(currentPlayer->socket, msg1, sizeof(msg1), 0);
                                                 send(rival->socket, msg2, sizeof(msg2), 0);
 
-                                                bzero
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+Ok. Turno de partida\n");
+                                                send(rival->socket, buffer, sizeof(buffer), 0);
+                                            }
+                                            else
+                                            {
+                                                currentPlayer->status = 3;
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+Ok. Esperando jugadores\n");
+                                                send(i, buffer, sizeof(buffer), 0);
                                             }
                                         }
+                                        else
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Número máximo de partidas\n");
+                                            send(i, buffer, sizeof(buffer), 0);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        bzero(buffer, sizeof(buffer));
+                                        strcpy(buffer, "-Err. Instrucción no válida\n");
+                                        send(i, buffer, sizeof(buffer), 0);
                                     }
                                 }
+                                else if (playerStatus == 3)
+                                {
+                                    bzero(buffer, sizeof(buffer));
+                                    strcpy(buffer, "+Ok. Instrucción no válida\n");
+                                    send(i, buffer, sizeof(buffer), 0);
+                                }
+                                else if (playerStatus == 4)
+                                {
+                                    Game *game = currentPlayer->game;
+                                    Player *rival = (game->turn % 2 == 0) ? game->player1 : game->player2;
+                                
                             }
                             // Si el cliente introdujo ctrl+c
                             if (received == 0)

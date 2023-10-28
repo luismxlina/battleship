@@ -31,3 +31,67 @@ El desarrollo de una práctica como la descrita en C requiere un enfoque paso a 
     - Una vez que la aplicación funcione, puedes trabajar en mejoras adicionales, como agregar una interfaz gráfica, permitir múltiples partidas simultáneas o agregar características adicionales al juego.
 
 Recuerda que el desarrollo de una aplicación cliente/servidor en red es un proceso complejo que requiere un buen diseño y pruebas exhaustivas. También, ten en cuenta aspectos de seguridad, como la validación de usuarios y la prevención de ataques.
+
+
+if (strcmp(instruction, "DISPARO") == 0)
+//     {
+//         int x, y;
+//         if ((instruction = strtok(NULL, " ")) != NULL)
+//         {
+//             x = atoi(instruction);
+//         }
+//         else
+//         {
+//             bzero(buffer, sizeof(buffer));
+//             strcpy(buffer, "-Err. Instrucción no válida\n");
+//             send(i, buffer, sizeof(buffer), 0);
+//             continue;
+//         }
+//         if ((instruction = strtok(NULL, "\0")) != NULL)
+//         {
+//             y = atoi(instruction);
+//         }
+//         else
+//         {
+//             bzero(buffer, sizeof(buffer));
+//             strcpy(buffer, "-Err. Instrucción no válida\n");
+//             send(i, buffer, sizeof(buffer), 0);
+//             continue;
+//         }
+//         if (x < 0 || x >= BOARD_SIZE || y < 0 || y >= BOARD_SIZE)
+//         {
+//             bzero(buffer, sizeof(buffer));
+//             strcpy(buffer, "-Err. Coordenadas incorrectas\n");
+//             send(i, buffer, sizeof(buffer), 0);
+//             continue;
+//         }
+//         if (game->turn % 2 == 0)
+//         {
+//             if (shoot(&game->board2, x, y) == true)
+//             {
+//                 bzero(buffer, sizeof(buffer));
+//                 strcpy(buffer, "+Ok. Tocado\n");
+//                 send(i, buffer, sizeof(buffer), 0);
+//                 bzero(buffer, sizeof(buffer));
+//                 strcpy(buffer, "+Ok. Turno rival\n");
+//                 send(rival->socket, buffer, sizeof(buffer), 0);
+//                 if (hasPlayerWon(&game->board2) == true)
+//                 {
+//                     bzero(buffer, sizeof(buffer));
+//                     strcpy(buffer, "+Ok. Has ganado\n");
+//                     send(i, buffer, sizeof(buffer), 0);
+//                     bzero(buffer, sizeof(buffer));
+//                     strcpy(buffer, "+Ok. Has perdido\n");
+//                     send(rival->socket, buffer, sizeof(buffer), 0);
+//                     exitClient(currentPlayer, &readfds, &numClients, &players);
+//                     exitClient(rival, &readfds, &numClients, &players);
+//                 }
+//             }
+//             else
+//             {
+//                 bzero(buffer, sizeof(buffer));
+//                 strcpy(buffer, "+Ok. Agua\n");
+//                 send(i, buffer, sizeof(buffer), 0);
+//                 bzero(buffer, sizeof(buffer));
+//                 strcpy(buffer, "+Ok. Turno
+// }
