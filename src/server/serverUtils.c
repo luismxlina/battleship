@@ -12,68 +12,65 @@
 #include <unistd.h>
 
 // Función para inicializar un nuevo cliente
-Client *initializeClient(int socket)
+Player *initializePlayer(int socket)
 {
-    Client *newClient;
-    newClient.socket = socket;
-    socklen_t addrSize = sizeof(struct sockaddr_in);
-    getpeername(socket, (struct sockaddr *)&newClient.address, &addrSize);
-    return newClient;
+    Player *newPlayer = (Player *)malloc(sizeof(Player));
+    newPlayer->name = (char *)malloc(sizeof(char) * 50);
+    newPlayer->socket = socket;
+    newPlayer->status = 0;
+    newPlayer->game = NULL;
+    return newPlayer;
 }
 
-// char *readfile(const char *nombreArchivo)
-// {
-//     FILE *archivo = fopen(nombreArchivo, "r");
-
-//     if (archivo == NULL)
-//     {
-//         printf("No se pudo abrir el archivo %s\n", nombreArchivo);
-//         return NULL;
-//     }
-
-//     fseek(archivo, 0, SEEK_END);
-//     long fileSize = ftell(archivo);
-//     fseek(archivo, 0, SEEK_SET);
-
-//     char *contenido = (char *)malloc(fileSize + 1);
-
-//     if (contenido == NULL)
-//     {
-//         fclose(archivo);
-//         return NULL;
-//     }
-
-//     size_t bytesRead = fread(contenido, 1, fileSize, archivo);
-//     contenido[bytesRead] = '\0';
-
-//     fclose(archivo);
-//     return contenido;
-// }
-
-void exitClient(int socket, fd_set *readfds, int *numClientes, Client arrayClientes[])
+char *readfile(const char *nombreArchivo)
 {
+    FILE *archivo = fopen(nombreArchivo, "r");
 
-    char buffer[250];
-    int j;
+    if (archivo == NULL)
+    {
+        printf("No se pudo abrir el archivo %s\n", nombreArchivo);
+        return NULL;
+    }
 
-    close(socket);
-    FD_CLR(socket, readfds);
+    fseek(archivo, 0, SEEK_END);
+    long fileSize = ftell(archivo);
+    fseek(archivo, 0, SEEK_SET);
 
-    // Re-estructurar el array de clientes
-    for (j = 0; j < (*numClientes) - 1; j++)
-        if (arrayClientes[j].socket == socket)
-            break;
-    for (; j < (*numClientes) - 1; j++)
-        (arrayClientes[j] = arrayClientes[j + 1]);
+    char *contenido = (char *)malloc(fileSize + 1);
 
-    (*numClientes)--;
+    if (contenido == NULL)
+    {
+        fclose(archivo);
+        return NULL;
+    }
 
-    bzero(buffer, sizeof(buffer));
-    sprintf(buffer, "Desconexión del cliente <%d>", socket);
+    size_t bytesRead = fread(contenido, 1, fileSize, archivo);
+    contenido[bytesRead] = '\0';
 
-    for (j = 0; j < (*numClientes); j++)
-        if (arrayClientes[j].socket != socket)
-            send(arrayClientes[j].socket, buffer, sizeof(buffer), 0);
+    fclose(archivo);
+    return contenido;
+}
+
+void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list)
+{
+    int socket = player->socket;
+    char buffer[MSG_SIZE];
+    if (player->status == 4)
+    {
+        Player* rival;
+        if(player->game->player1->socket != socket) {
+            rival = player->game->player1;
+        } else {
+            rival = player->game->player2;
+        }
+        bzero(buffer, sizeof(buffer));
+        strcpy(buffer, "+Ok. Tu rival ha salido de la partida.\n");
+        send(rival->socket, buffer, sizeof(buffer), 0);
+
+        rival->status = 2;
+        free(rival->game);
+        rival->game = NULL;
+    }
 }
 
 void signalHandler(int signum)

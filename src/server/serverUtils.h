@@ -41,7 +41,8 @@ typedef struct list
     List *next;
 } List;
 
-Player *initializeClient(int socket);
+Player *initializePlayer(int socket);
 void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list);
 void signalHandler(int signum);
+char *readfile(const char *nombreArchivo);
 #endif
