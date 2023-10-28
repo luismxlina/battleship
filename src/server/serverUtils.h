@@ -1,5 +1,7 @@
 #ifndef SERVERUTILS_H
 #define SERVERUTILS_H
+#include "board.h"
+#include <netinet/in.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/select.h>
@@ -11,14 +13,35 @@
 #define MAX_CLIENTS 50
 
 // Estructura para representar un cliente
-// typedef struct
-// {
-//     int socket;
-//     struct sockaddr_in address;
-// } Client;
+typedef struct player
+{
+    int socket;
+    char *name;
+    int status; /* 0: conectado no identificado
+                 * 1: registrado, esperando password
+                 * 2: registrado, esperando iniciar partida
+                 * 3: en espera de match
+                 * 4: jugando
+                 * */
 
-// Client initializeClient(int socket);
-// char *readfile(const char *nombreArchivo);
-void exitClient(int socket, fd_set *readfds, int *numClientes, int arrayClientes[]);
+    Game *game;
+} Player;
+
+typedef struct game
+{
+    Board board;
+    Player *player1;
+    Player *player2;
+    int turn;
+} Game;
+
+typedef struct list
+{
+    Player *item;
+    List *next;
+} List;
+
+Player *initializeClient(int socket);
+void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list);
 void signalHandler(int signum);
 #endif

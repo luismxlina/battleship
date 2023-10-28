@@ -20,7 +20,7 @@ int main()
     fd_set readfds, auxfds;
     char buffer[MSG_SIZE];
     int output;
-    int clients[MAX_CLIENTS];
+    Client clients[MAX_CLIENTS];
     int numClients = 0;
 
     int i, j, k;
@@ -40,7 +40,11 @@ int main()
     // Configurar la dirección del servidor
     on = 1;
     ret = setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-
+    if (ret < 0)
+    {
+        perror("Error al configurar el socket del servidor");
+        exit(EXIT_FAILURE);
+    }
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(PORT);
     serverAddr.sin_addr.s_addr = INADDR_ANY;
@@ -92,11 +96,11 @@ int main()
                         {
                             if (numClients < MAX_CLIENTS)
                             {
-                                clients[numClients] = clientSocket;
+                                clients[numClients].socket = clientSocket;
                                 numClients++;
                                 FD_SET(clientSocket, &readfds);
 
-                                strcpy(buffer, "Bienvenido al chat\n");
+                                strcpy(buffer, "Bienvenido a Battleship\nEscriba la opción que desee:\n1. Iniciar sesión\n2. Registrarse\n3. Salir\n");
 
                                 send(clientSocket, buffer, sizeof(buffer), 0);
 
@@ -105,7 +109,7 @@ int main()
 
                                     bzero(buffer, sizeof(buffer));
                                     sprintf(buffer, "Nuevo Cliente conectado en <%d>", clientSocket);
-                                    send(clients[j], buffer, sizeof(buffer), 0);
+                                    send(clients[j].socket, buffer, sizeof(buffer), 0);
                                 }
                             }
                             else
@@ -131,9 +135,9 @@ int main()
                             {
                                 bzero(buffer, sizeof(buffer));
                                 strcpy(buffer, "Desconexión servidor\n");
-                                send(clients[j], buffer, sizeof(buffer), 0);
-                                close(clients[j]);
-                                FD_CLR(clients[j], &readfds);
+                                send(clients[j].socket, buffer, sizeof(buffer), 0);
+                                close(clients[j].socket);
+                                FD_CLR(clients[j].socket, &readfds);
                             }
                             close(serverSocket);
                             exit(EXIT_FAILURE);
@@ -149,9 +153,8 @@ int main()
                         if (received > 0)
                         {
 
-                            if (strcmp(buffer, "SALIR\n") == 0)
+                            if (strcmp(buffer, "3\n") == 0)
                             {
-
                                 exitClient(i, &readfds, &numClients, clients);
                             }
                             else
@@ -165,8 +168,8 @@ int main()
                                 printf("%s\n", buffer);
 
                                 for (j = 0; j < numClients; j++)
-                                    if (clients[j] != i)
-                                        send(clients[j], buffer, sizeof(buffer), 0);
+                                    if (clients[j].socket != i)
+                                        send(clients[j].socket, buffer, sizeof(buffer), 0);
                             }
                         }
                         // Si el cliente introdujo ctrl+c

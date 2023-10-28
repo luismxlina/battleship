@@ -12,14 +12,14 @@
 #include <unistd.h>
 
 // Función para inicializar un nuevo cliente
-// Client initializeClient(int socket)
-// {
-//     Client newClient;
-//     newClient.socket = socket;
-//     socklen_t addrSize = sizeof(struct sockaddr_in);
-//     getpeername(socket, (struct sockaddr *)&newClient.address, &addrSize);
-//     return newClient;
-// }
+Client *initializeClient(int socket)
+{
+    Client *newClient;
+    newClient.socket = socket;
+    socklen_t addrSize = sizeof(struct sockaddr_in);
+    getpeername(socket, (struct sockaddr *)&newClient.address, &addrSize);
+    return newClient;
+}
 
 // char *readfile(const char *nombreArchivo)
 // {
@@ -50,7 +50,7 @@
 //     return contenido;
 // }
 
-void exitClient(int socket, fd_set *readfds, int *numClientes, int arrayClientes[])
+void exitClient(int socket, fd_set *readfds, int *numClientes, Client arrayClientes[])
 {
 
     char buffer[250];
@@ -61,7 +61,7 @@ void exitClient(int socket, fd_set *readfds, int *numClientes, int arrayClientes
 
     // Re-estructurar el array de clientes
     for (j = 0; j < (*numClientes) - 1; j++)
-        if (arrayClientes[j] == socket)
+        if (arrayClientes[j].socket == socket)
             break;
     for (; j < (*numClientes) - 1; j++)
         (arrayClientes[j] = arrayClientes[j + 1]);
@@ -72,8 +72,8 @@ void exitClient(int socket, fd_set *readfds, int *numClientes, int arrayClientes
     sprintf(buffer, "Desconexión del cliente <%d>", socket);
 
     for (j = 0; j < (*numClientes); j++)
-        if (arrayClientes[j] != socket)
-            send(arrayClientes[j], buffer, sizeof(buffer), 0);
+        if (arrayClientes[j].socket != socket)
+            send(arrayClientes[j].socket, buffer, sizeof(buffer), 0);
 }
 
 void signalHandler(int signum)
