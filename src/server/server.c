@@ -1,3 +1,5 @@
+#include "auth.h"
+#include "list.h"
 #include "serverUtils.h"
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -18,16 +20,16 @@ int main()
     struct sockaddr_in serverAddr, clientAddr;
     socklen_t addrSize = sizeof(struct sockaddr_in);
     fd_set readfds, auxfds;
+
     char buffer[MSG_SIZE];
-    int output;
-    Client clients[MAX_CLIENTS];
-    int numClients = 0;
-
-    int i, j, k;
-    int received;
     char identifier[MSG_SIZE];
+    int on, ret_select;
 
-    int on, ret;
+    int numClients = 0;
+    int numGames = 0;
+    int received;
+
+    List *players = NULL;
 
     // Crear el socket del servidor
     serverSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -38,9 +40,7 @@ int main()
     }
 
     // Configurar la dirección del servidor
-    on = 1;
-    ret = setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-    if (ret < 0)
+    if (setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) < 0)
     {
         perror("Error al configurar el socket del servidor");
         exit(EXIT_FAILURE);
@@ -57,7 +57,7 @@ int main()
     }
 
     // Escuchar conexiones entrantes
-    if (!listen(serverSocket, 2) == 0)
+    if (listen(serverSocket, 2) < 0)
     {
         perror("Error al escuchar conexiones entrantes");
         exit(EXIT_FAILURE);
@@ -75,11 +75,11 @@ int main()
     while (true)
     {
         auxfds = readfds;
-        output = select(FD_SETSIZE, &auxfds, NULL, NULL, NULL);
+        ret_select = select(FD_SETSIZE, &auxfds, NULL, NULL, NULL);
 
-        if (output > 0)
+        if (ret_select > 0)
         {
-            for (i = 0; i < FD_SETSIZE; i++)
+            for (int i = 0; i < FD_SETSIZE; i++)
             {
                 // Buscamos el socket por el que se ha establecido la comunicación
                 if (FD_ISSET(i, &auxfds))
@@ -96,26 +96,19 @@ int main()
                         {
                             if (numClients < MAX_CLIENTS)
                             {
-                                clients[numClients].socket = clientSocket;
+                                Player *newPlayer = initializePlayer(clientSocket);
+                                pushBack(&players, newPlayer);
                                 numClients++;
+                                printf("Nuev jugador conectado: %d/%d\n", clientSocket, numClients);
                                 FD_SET(clientSocket, &readfds);
 
-                                strcpy(buffer, "Bienvenido a Battleship\nEscriba la opción que desee:\n1. Iniciar sesión\n2. Registrarse\n3. Salir\n");
-
+                                strcpy(buffer, "+Ok. Usuario conectado\n");
                                 send(clientSocket, buffer, sizeof(buffer), 0);
-
-                                for (j = 0; j < (numClients - 1); j++)
-                                {
-
-                                    bzero(buffer, sizeof(buffer));
-                                    sprintf(buffer, "Nuevo Cliente conectado en <%d>", clientSocket);
-                                    send(clients[j].socket, buffer, sizeof(buffer), 0);
-                                }
                             }
                             else
                             {
                                 bzero(buffer, sizeof(buffer));
-                                strcpy(buffer, "Demasiados clientes conectados\n");
+                                strcpy(buffer, "-Err. Demasiados usuarios conectados\n");
                                 send(clientSocket, buffer, sizeof(buffer), 0);
                                 close(clientSocket);
                             }
@@ -131,19 +124,27 @@ int main()
                         if (strcmp(buffer, "SALIR\n") == 0)
                         {
 
-                            for (j = 0; j < numClients; j++)
+                            for (int j = 0; j < numClients; j++)
                             {
                                 bzero(buffer, sizeof(buffer));
                                 strcpy(buffer, "Desconexión servidor\n");
-                                send(clients[j].socket, buffer, sizeof(buffer), 0);
-                                close(clients[j].socket);
-                                FD_CLR(clients[j].socket, &readfds);
+                                send(players->item->socket, buffer, sizeof(buffer), 0);
+                                close(players->item->socket);
+                                FD_CLR(players->item->socket, &readfds);
+                                removeItem(&players, players->item->socket);
                             }
                             close(serverSocket);
                             exit(EXIT_FAILURE);
                         }
-                        // Mensajes que se quieran mandar a los clientes (implementar)
+                        else
+                        {
+                            for (int j = 0; j < numClients; j++)
+                            {
+                                send(players->item->socket, buffer, sizeof(buffer), 0);
+                            }
+                        }
                     }
+                    // Mensaje de un cliente antiguo
                     else
                     {
                         bzero(buffer, sizeof(buffer));
@@ -152,77 +153,135 @@ int main()
 
                         if (received > 0)
                         {
-
-                            if (strcmp(buffer, "3\n") == 0)
+                            Player *currentPlayer = searchPlayer(players, i);
+                            int playerStatus = currentPlayer->status;
+                            if (buffer[strlen(buffer) - 1] == '\n')
                             {
-                                exitClient(i, &readfds, &numClients, clients);
+                                buffer[strlen(buffer) - 1] = '\0';
+                            }
+                            printf("Jugador[sd: %d, estado: %d] mensaje: %s\n", i, playerStatus, buffer);
+                            if (strcmp(buffer, "SALIR\n") == 0)
+                            {
+                                printf("Jugador <%d> saliendo...\n", i);
+                                exitClient(currentPlayer, &readfds, &numClients, &players);
                             }
                             else
                             {
-
-                                sprintf(identifier, "<%d>: %s", i, buffer);
-                                bzero(buffer, sizeof(buffer));
-
-                                strcpy(buffer, identifier);
-
-                                printf("%s\n", buffer);
-
-                                for (j = 0; j < numClients; j++)
-                                    if (clients[j].socket != i)
-                                        send(clients[j].socket, buffer, sizeof(buffer), 0);
+                                char *instruction = strtok(buffer, " ");
+                                if (strlen(buffer) == 0)
+                                {
+                                    bzero(buffer, sizeof(buffer));
+                                    strcpy(buffer, "-Err. Instrucción no válida\n");
+                                    send(i, buffer, sizeof(buffer), 0);
+                                }
+                                else if (playerStatus == 0)
+                                {
+                                    if (strcmp(instruction, "USUARIO") == 0)
+                                    {
+                                        if ((instruction = strtok(NULL, " ")) != NULL)
+                                        {
+                                            if (findUser(FILENAME, instruction) == 1 &&
+                                                findPlayerByName(players, instruction) == 0)
+                                            {
+                                                currentPlayer->status = 1;
+                                                strcpy(currentPlayer->name, instruction);
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+Ok. Usuario correcto\n");
+                                            }
+                                            else if (findPlayerByName(players, instruction) == 1)
+                                            {
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "-Err. Usuario ya conectado\n");
+                                            }
+                                            else
+                                            {
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "-Err. Usuario incorrecto\n");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Instrucción no válida\n");
+                                        }
+                                    }
+                                    else if (strcmp(instruction, "REGISTRO") == 0)
+                                    {
+                                        int correct = 0, error = 0, count = 0;
+                                        char user[250];
+                                        char psswd[MSG_SIZE];
+                                        while (count < 4 && error == 0)
+                                        {
+                                            char *line;
+                                            if ((instruction = strtok(NULL, " ")) != NULL && strlen(instruction) > 0)
+                                            {
+                                                if (count == 0 && strcmp(instruction, "-u") == 0)
+                                                {
+                                                }
+                                                else if (count == 1)
+                                                {
+                                                    strcpy(user, instruction);
+                                                }
+                                                else if (count == 2 && strcmp(instruction, "-p") == 0)
+                                                {
+                                                }
+                                                else if (count == 3)
+                                                {
+                                                    strcpy(psswd, instruction);
+                                                }
+                                                else
+                                                {
+                                                    error = 1;
+                                                }
+                                                count++;
+                                            }
+                                            else
+                                            {
+                                                error = 1;
+                                            }
+                                        }
+                                        if (findUser(FILENAME, user) == 1 && error == 0)
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Usuario ya registrado\n");
+                                        }
+                                        else if (error == 0)
+                                        {
+                                            createUser(FILENAME, user, psswd);
+                                            currentPlayer->status = 2;
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "+Ok. Usuario registrado\n");
+                                        }
+                                        else
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Error en los argumentos\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        bzero(buffer, sizeof(buffer));
+                                        strcpy(buffer, "-Err. Instrucción no válida\n");
+                                    }
+                                    send(i, buffer, sizeof(buffer), 0);
+                                } else if (playerStatus == 1) {
+                                    if(strcmp(instruction))
+                                }
                             }
-                        }
-                        // Si el cliente introdujo ctrl+c
-                        if (received == 0)
-                        {
-                            printf("El socket %d, ha introducido ctrl+c\n", i);
-                            // Eliminar ese socket
-                            exitClient(i, &readfds, &numClients, clients);
+                            // Si el cliente introdujo ctrl+c
+                            if (received == 0)
+                            {
+                                printf("El socket %d, ha introducido ctrl+c\n", i);
+                                // Eliminar ese socket
+                                exitClient(i, &readfds, &numClients, clients);
+                            }
                         }
                     }
                 }
             }
         }
+
+        close(serverSocket);
+        return 0;
     }
-
-    close(serverSocket);
-    return 0;
 }
-
-// Aceptar conexiones de clientes
-//     if ((clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddr, &addrSize)) < 0)
-//     {
-//         perror("Error al aceptar la conexión del cliente");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     // Inicializar un nuevo cliente
-//     Client newClient = initializeClient(clientSocket);
-//     bzero(buffer, sizeof(buffer));
-//     // strcpy(buffer, "Bienvenido a Battleship Online\n");
-//     const char *bannerFile = "battleship.txt";
-//     char *banner = readFile(bannerFile);
-//     if (banner == NULL)
-//     {
-//         perror("Error al leer el archivo del banner");
-//         free(banner);
-//         exit(EXIT_FAILURE);
-//     }
-//     strcpy(buffer, banner);
-//     if (send(clientSocket, buffer, sizeof(buffer), 0) == -1)
-//     {
-//         perror("Error en la operación de send");
-//         exit(1);
-//     }
-
-//     // Lógica de autenticación y emparejamiento de clientes
-
-//     // Crear y gestionar una nueva partida
-//     // ...
-
-//     // Cerrar el socket del cliente una vez que la partida haya terminado
-//     close(clientSocket);
-// }
-
-// // Cerrar el socket del servidor
-// close(serverSocket);
