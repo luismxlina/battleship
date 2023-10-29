@@ -1,4 +1,4 @@
-#ifdef LIST_H
+#ifndef LIST_H
 #define LIST_H
 #include "serverUtils.h"
 
@@ -9,7 +9,7 @@ void removeItem(List **head, int sd);
 int listSize(List *head);
 Player *getPlayer(List *head, int sd);
 int findPlayerByName(List *head, char *name);
-Player *assingPlayer(List *head);
+Player *assignPlayer(List *head);
 void printList(List *head);
 
 #endif

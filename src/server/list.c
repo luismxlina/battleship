@@ -1,5 +1,6 @@
 #include "list.h"
 #include "serverUtils.h"
+#include <stdio.h>
 
 List *newItem()
 {
@@ -86,7 +87,7 @@ int findPlayerByName(List *head, char *name)
     }
     return 0;
 }
-Player *assingPlayer(List *head)
+Player *assignPlayer(List *head)
 {
     List *aux = head;
     while (aux != NULL)

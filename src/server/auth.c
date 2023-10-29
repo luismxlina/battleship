@@ -19,7 +19,7 @@ typedef struct
 
 // Función para generar una contraseña hash utilizando SHA-256 y salting
 void hashPassword(const char *password, unsigned char *salt,
-                   unsigned char *hash)
+                  unsigned char *hash)
 {
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
@@ -29,8 +29,15 @@ void hashPassword(const char *password, unsigned char *salt,
 }
 
 // Función para crear un nuevo usuario y almacenarlo en un archivo
-void createUser(FILE *file, const char *username, const char *password)
+void createUser(const char *filename, const char *username, const char *password)
 {
+    FILE *file = fopen(filename, "ab+");
+    if (file == NULL)
+    {
+        perror("Error al abrir el archivo de usuarios");
+        return;
+    }
+
     User user;
     strncpy(user.username, username, MAX_USERNAME_LENGTH);
 
@@ -42,10 +49,17 @@ void createUser(FILE *file, const char *username, const char *password)
 
     // Escribir el usuario en el archivo
     fwrite(&user, sizeof(User), 1, file);
+    fclose(file);
 }
 
-int findUser(FILE *file, const char *username)
+int findUser(char *filename, const char *username)
 {
+    FILE *file = fopen(filename, "ab+");
+    if (file == NULL)
+    {
+        perror("Error al abrir el archivo de usuarios");
+        return 0;
+    }
     User user;
     rewind(file); // Reiniciar el puntero de archivo al principio
 
@@ -56,14 +70,24 @@ int findUser(FILE *file, const char *username)
             return 1; // El usuario existe
         }
     }
+    fclose(file);
     return 0; // El usuario no existe
 }
 
 // Función para verificar las credenciales del usuario
-int checkCredentials(FILE *file, const char *username,
-                           const char *password)
+int checkCredentials(char *filename, const char *username,
+                     const char *password)
 {
+    FILE *file = fopen(filename, "ab+");
+
+    if (file == NULL)
+    {
+        perror("Error al abrir el archivo de usuarios");
+        return 0;
+    }
+
     User user;
+
     while (fread(&user, sizeof(User), 1, file) == 1)
     {
         if (strcmp(user.username, username) == 0)
@@ -77,19 +101,15 @@ int checkCredentials(FILE *file, const char *username,
             }
         }
     }
+
+    fclose(file);
+
     return 0; // Las credenciales son incorrectas
 }
 
-void auth()
+/* void auth()
 {
-    FILE *file = fopen("usuarios.dat", "ab+");
-
-    if (file == NULL)
-    {
-        perror("Error al abrir el archivo de usuarios");
-        return;
-    }
-
+    char *filename = "users.dat";
     int opcion;
     char username[MAX_USERNAME_LENGTH];
     char password[MAX_PASSWORD_LENGTH];
@@ -101,14 +121,14 @@ void auth()
     {
         printf("Nombre de usuario: ");
         scanf("%s", username);
-        if (findUser(file, username))
+        if (findUser(filename, username))
         {
             printf("El nombre de usuario ya existe.\n");
         }
         else
         {
             char *password = getpass("Contraseña: ");
-            createUser(file, username, password);
+            createUser(filename, username, password);
             printf("Usuario creado con éxito.\n");
         }
     }
@@ -118,7 +138,7 @@ void auth()
         scanf("%s", username);
         char *password = getpass("Contraseña: ");
 
-        if (checkCredenciales(file, username, password))
+        if (checkCredentials(filename, username, password))
         {
             printf("Inicio de sesión exitoso.\n");
         }
@@ -132,3 +152,4 @@ void auth()
         printf("Opción no válida.\n");
     }
 }
+ */

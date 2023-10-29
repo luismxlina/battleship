@@ -14,8 +14,12 @@
 #define MAX_GAMES 30
 #define FILENAME "usuarios.dat"
 
+typedef struct player Player;
+typedef struct game Game;
+typedef struct list List;
+
 // Estructura para representar un cliente
-typedef struct player
+struct player
 {
     int socket;
     char *name;
@@ -27,22 +31,22 @@ typedef struct player
                  * */
 
     Game *game;
-} Player;
+};
 
-typedef struct game
+struct game
 {
     Board board1;
     Board board2;
     Player *player1;
     Player *player2;
     int turn;
-} Game;
+};
 
-typedef struct list
+struct list
 {
     Player *item;
     List *next;
-} List;
+};
 
 Player *initializePlayer(int socket);
 void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list);

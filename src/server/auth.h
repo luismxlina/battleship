@@ -20,9 +20,9 @@ typedef struct
 
 void hashPassword(const char *password, unsigned char *salt,
                   unsigned char *hash);
-void createUser(FILE *file, const char *username, const char *password);
-int findUser(FILE *file, const char *username);
-int checkCredentials(FILE *file, const char *username,
+void createUser(const char *filename, const char *username, const char *password);
+int findUser(char *filename, const char *username);
+int checkCredentials(char *filename, const char *username,
                      const char *password);
 void auth();
 

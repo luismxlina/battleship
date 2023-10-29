@@ -50,7 +50,7 @@ bool hasPlayerWon(Board *opponentBoard)
     return true; // Si no se encontraron barcos en el tablero del oponente, el jugador ha ganado
 }
 
-void inicializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
+void initializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
 {
     Game *game = (Game *)malloc(sizeof(Game)); // Se crea la estructura del juego
     generateBoard(&game->board1);             // Se genera el tablero del jugador 1 (el que inicia)

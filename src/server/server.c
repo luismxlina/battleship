@@ -154,7 +154,7 @@ int main()
 
                         if (received > 0)
                         {
-                            Player *currentPlayer = searchPlayer(players, i);
+                            Player *currentPlayer = getPlayer(players, i);
                             int playerStatus = currentPlayer->status;
                             if (buffer[strlen(buffer) - 1] == '\n')
                             {
@@ -308,7 +308,7 @@ int main()
                                             {
                                                 numGames++;
                                                 bzero(buffer, sizeof(buffer));
-                                                char *msg1 = buffer, msg2 = buffer;
+                                                char *msg1 = buffer, *msg2 = buffer;
                                                 strcpy(buffer, "+Ok. Empieza la partida");
                                                 initializeGame(currentPlayer, rival, msg1, msg2);
                                                 send(currentPlayer->socket, msg1, sizeof(msg1), 0);
@@ -350,22 +350,38 @@ int main()
                                 {
                                     Game *game = currentPlayer->game;
                                     Player *rival = (game->turn % 2 == 0) ? game->player1 : game->player2;
-                                
-                            }
-                            // Si el cliente introdujo ctrl+c
-                            if (received == 0)
-                            {
-                                printf("El socket %d, ha introducido ctrl+c\n", i);
-                                // Eliminar ese socket
-                                exitClient(i, &readfds, &numClients, &players);
+
+                                    if (strcmp(instruction, "DISPARO") == 0)
+                                    {
+                                        if (currentPlayer->socket == rival->socket)
+                                        {
+                                            bzero(buffer, sizeof(buffer));
+                                            strcpy(buffer, "-Err. Debe esperar su turno\n");
+                                            send(i, buffer, sizeof(buffer), 0);
+                                        }
+                                        else
+                                        {
+                                            if ((instruction = strtok(NULL, "\0")) != NULL)
+                                            {
+                                            }
+                                        }
+                                    }
+                                }
+                                // Si el cliente introdujo ctrl+c
+                                if (received == 0)
+                                {
+                                    printf("El socket %d, ha introducido ctrl+c\n", i);
+                                    // Eliminar ese socket
+                                    exitClient(currentPlayer, &readfds, &numClients, &players);
+                                }
                             }
                         }
                     }
                 }
             }
-        }
 
-        close(serverSocket);
-        return 0;
+            close(serverSocket);
+            return 0;
+        }
     }
 }
