@@ -160,7 +160,7 @@ int main()
                             {
                                 buffer[strlen(buffer) - 1] = '\0';
                             }
-                            printf("Jugador[sd: %d, estado: %d] mensaje: %s\n", i, playerStatus, buffer);
+                            printf("Jugador[sd: %d, estado: %d] mensaje: <%s>\n", i, playerStatus, buffer);
                             if (strcmp(buffer, "SALIR\n") == 0)
                             {
                                 printf("Jugador <%d> saliendo...\n", i);
