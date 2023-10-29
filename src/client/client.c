@@ -20,8 +20,9 @@ int main()
     -----------------------------------------------------*/
     int sd;
     struct sockaddr_in sockname;
-    char buffer[250];
-    Board *board;
+    char buffer[1000];
+    char* aux;
+    Board *board = NULL;
     socklen_t len_sockname;
     fd_set readfds, auxfds;
     int salida;
@@ -77,12 +78,14 @@ int main()
             recv(sd, buffer, sizeof(buffer), 0);
             if (strstr(buffer, "+Ok. Empieza la partida.\n") != NULL)
             {
-                stringToBoard(board, buffer);
+                strcpy(aux, buffer+24);
+                stringToBoard(board, aux);
                 printBoard(board);
             }
             else if (strstr(buffer, "+Ok. Nuevo tablero.") != NULL)
             {
-                stringToBoard(board, buffer);
+                strcpy(aux, buffer+20);
+                stringToBoard(board, aux);
                 printBoard(board);
                 printf("+Ok. Nuevo tablero.\n");
             }
