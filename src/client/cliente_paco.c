@@ -65,6 +65,13 @@ int main()
     /* ------------------------------------------------------------------
         Se transmite la información
     -------------------------------------------------------------------*/
+     strcpy(buffer, "USUARIO pepe\n");
+    send(sd, buffer, sizeof(buffer), 0);
+    sleep(3);
+    strcpy(buffer, "PASSWORD 1234\n");
+    send(sd, buffer, sizeof(buffer), 0);
+    sleep(3);
+    
     do
     {
         auxfds = readfds;
@@ -74,8 +81,7 @@ int main()
         {
             bzero(buffer, sizeof(buffer));
             recv(sd, buffer, sizeof(buffer), 0);
-            printf("Tu puta madre");
-            if (strstr(buffer, "+Ok. Empieza la partida") != NULL)
+            if (strstr(buffer, "+Ok. Empieza la partida\n") != NULL)
             {
                 stringToBoard(board, buffer);
                 printBoard(board);
@@ -100,8 +106,10 @@ int main()
             if (FD_ISSET(0, &auxfds))
             {
                 bzero(buffer, sizeof(buffer));
-                fgets(buffer, sizeof(buffer), stdin);
-                send(sd, buffer, sizeof(buffer), 0);
+                // fgets(buffer, sizeof(buffer), stdin);
+
+                // strcpy(buffer, "INICIAR-PARTIDA\n");
+                // send(sd, buffer, sizeof(buffer), 0);
                 if (strcmp(buffer, "SALIR\n") == 0)
                     end = 1;
             }
@@ -109,7 +117,8 @@ int main()
 
     } while (end == 0);
 
+   
     // Cerrar el socket del cliente
-    close(sd);
+    // close(sd);
     return 0;
 }
