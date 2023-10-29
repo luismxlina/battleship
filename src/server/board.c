@@ -147,3 +147,42 @@ void boardToString(Board *board, char *output)
     }
     output[index] = '\0'; // Agrega un carácter nulo al final de la cadena
 }
+
+int stringToBoard(Board *board, char *str)
+{
+    // Comprobar si la cadena es válida
+    if (board == NULL || str == NULL || strlen(str) != BOARD_SIZE * BOARD_SIZE)
+    {
+        return -1;
+    }
+
+    // Convertir la cadena en un tablero de juego
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; j < BOARD_SIZE; j++)
+        {
+            if (str[i * BOARD_SIZE + j] == EMPTY)
+            {
+                board->grid[i][j] = EMPTY;
+            }
+            else if (str[i * BOARD_SIZE + j] == SHIP)
+            {
+                board->grid[i][j] = SHIP;
+            }
+            else if (str[i * BOARD_SIZE + j] == HIT)
+            {
+                board->grid[i][j] = HIT;
+            }
+            else if (str[i * BOARD_SIZE + j] == MISS)
+            {
+                board->grid[i][j] = MISS;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+
+    return 0;
+}

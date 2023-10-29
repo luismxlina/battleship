@@ -30,5 +30,6 @@ void printBoard(Board *board);
 int getRandom(int min, int max);
 void generateBoard(Board *board);
 void boardToString(Board *board, char *str);
+int stringToBoard(Board *board, char *str);
 
 #endif /* BOARD_H */

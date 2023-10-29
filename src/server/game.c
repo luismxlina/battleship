@@ -6,30 +6,30 @@
 #include <stdio.h>
 
 // Función para realizar un disparo en el tablero del oponente
-bool makeShot(Board *opponentBoard, int x, int y)
+int makeShot(Board *opponentBoard, int x, int y)
 {
     // Verifica si las coordenadas están dentro del tablero
     if (x < 0 || x >= BOARD_SIZE || y < 0 || y >= BOARD_SIZE)
     {
-        return false; // Devuelve falso si las coordenadas están fuera del tablero
+        return -1; // Devuelve -1 si las coordenadas están fuera del tablero
     }
 
     // Verifica si la casilla ya ha sido disparada
     if (opponentBoard->grid[y][x] == HIT || opponentBoard->grid[y][x] == MISS)
     {
-        return false; // Devuelve falso si ya se hizo un disparo en esa casilla
+        return 0; // Devuelve 0 si ya se hizo un disparo en esa casilla
     }
 
     // Realiza el disparo
     if (opponentBoard->grid[y][x] == SHIP)
     {
         opponentBoard->grid[y][x] = HIT; // Marcamos como un acierto
-        return true;                     // Devuelve verdadero si se acertó un barco
+        return 1;                     // Devuelve 1 si se acertó un barco
     }
     else
     {
         opponentBoard->grid[y][x] = MISS; // Marcamos como un fallo
-        return false;                     // Devuelve falso si se disparó al agua
+        return 2;                     // Devuelve 2 si se disparó al agua
     }
 }
 

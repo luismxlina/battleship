@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
-#define PORT 2000
+#define PORT 2060
 #define MSG_SIZE 1000
 #define MAX_CLIENTS 50
 #define MAX_GAMES 30

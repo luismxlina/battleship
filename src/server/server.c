@@ -363,25 +363,92 @@ int main()
                                         {
                                             if ((instruction = strtok(NULL, "\0")) != NULL)
                                             {
+                                                char *row = strtok(NULL, ",");
+                                                char *column = strtok(NULL, "\0");
+                                                int x = (int)(row[0] - 'A');
+                                                int y = atoi(column) - 1;
+                                                int res = makeShot(&game->board1, x, y);
+                                                // Devuelve -1 si las coordenadas están fuera del tablero
+                                                if (res == -1)
+                                                {
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "-Err. Coordenadas fuera del tablero\n");
+                                                    send(i, buffer, sizeof(buffer), 0);
+                                                }
+                                                // Devuelve 0 si ya se hizo un disparo en esa casilla
+                                                else if (res == 0)
+                                                {
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "-Err. Ya se hizo un disparo en esa casilla\n");
+                                                    send(i, buffer, sizeof(buffer), 0);
+                                                }
+                                                // Devuelve 1 si se acertó un barco
+                                                else if (res == 1)
+                                                {
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Tocado\n");
+                                                    send(i, buffer, sizeof(buffer), 0);
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Tocado rival\n");
+                                                    send(rival->socket, buffer, sizeof(buffer), 0);
+                                                    if (hasPlayerWon(&game->board1))
+                                                    {
+                                                        bzero(buffer, sizeof(buffer));
+                                                        strcpy(buffer, "+Ok. Has ganado la partida\n");
+                                                        send(i, buffer, sizeof(buffer), 0);
+                                                        bzero(buffer, sizeof(buffer));
+                                                        strcpy(buffer, "+Ok. Has perdido la partida\n");
+                                                        send(rival->socket, buffer, sizeof(buffer), 0);
+                                                        currentPlayer->status = 2;
+                                                        rival->status = 2;
+                                                        numGames--;
+                                                    }
+                                                }
+                                                // Devuelve 2 si se disparó al agua
+                                                else if (res == 2)
+                                                {
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Agua\n");
+                                                    send(i, buffer, sizeof(buffer), 0);
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Agua rival\n");
+                                                    send(rival->socket, buffer, sizeof(buffer), 0);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "-Err. Indique las coordenadas\n");
+                                                send(i, buffer, sizeof(buffer), 0);
                                             }
                                         }
+                                    }
+                                    else
+                                    {
+                                        bzero(buffer, sizeof(buffer));
+                                        strcpy(buffer, "-Err. Instrucción no válida\n");
+                                        send(i, buffer, sizeof(buffer), 0);
                                     }
                                 }
                                 // Si el cliente introdujo ctrl+c
                                 if (received == 0)
                                 {
-                                    printf("El socket %d, ha introducido ctrl+c\n", i);
+                                    printf("El socket %d, ha introducido ^C\n", i);
+                                    Player *player = getPlayer(players, i);
+                                    if (player->status == 4)
+                                    {
+                                        numGames--;
+                                    }
                                     // Eliminar ese socket
-                                    exitClient(currentPlayer, &readfds, &numClients, &players);
+                                    exitClient(player, &readfds, &numClients, &players);
                                 }
                             }
                         }
                     }
                 }
             }
-
-            close(serverSocket);
-            return 0;
         }
     }
+    close(serverSocket);
+    return 0;
 }
