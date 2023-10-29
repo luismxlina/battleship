@@ -186,3 +186,18 @@ int stringToBoard(Board *board, char *str)
 
     return 0;
 }
+
+// int main()
+// {
+//     Board* board = malloc(sizeof(Board));
+//     initializeBoard(board);
+//     printBoard(board);
+//     generateBoard(board);
+//     printBoard(board);
+//     char* str = malloc(sizeof(char) * BOARD_SIZE * BOARD_SIZE);
+//     boardToString(board, str);
+//     printf("%s\n", str);
+//     stringToBoard(board, str);
+//     printBoard(board);
+//     return 0;
+// }
