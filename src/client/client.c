@@ -20,6 +20,7 @@ int main()
     int sd;
     struct sockaddr_in sockname;
     char buffer[1000];
+    char aux[1000];
     Board *board = NULL;
     socklen_t len_sockname;
     fd_set readfds, auxfds;
@@ -74,15 +75,23 @@ int main()
         {
             bzero(buffer, sizeof(buffer));
             recv(sd, buffer, sizeof(buffer), 0);
-            printf("Tu puta madre");
             if (strstr(buffer, "+Ok. Empieza la partida") != NULL)
             {
-                stringToBoard(board, buffer);
+                strcpy(aux,buffer+23);
+                printf("%s\n", aux);
+                stringToBoard(board, aux);
+                for (int i = 0; i < BOARD_SIZE; i++)
+                {
+                    for (int j = 0; j < BOARD_SIZE; j++)
+                    {
+                        printf("%c ", board->grid[i][j]);
+                    }
+                }
                 printBoard(board);
             }
             else if (strstr(buffer, "+Ok. Nuevo tablero.") != NULL)
             {
-                stringToBoard(board, buffer);
+                stringToBoard(board, buffer+20);
                 printBoard(board);
                 printf("+Ok. Nuevo tablero.\n");
             }

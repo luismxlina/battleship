@@ -311,6 +311,8 @@ int main()
                                                 char msg1[MSG_SIZE], msg2[MSG_SIZE];
                                                 strcpy(buffer, "+Ok. Empieza la partida");
                                                 initializeGame(currentPlayer, rival, msg1, msg2);
+                                                strcat(msg1, buffer);
+                                                strcat(msg2, buffer);
                                                 send(currentPlayer->socket, msg1, sizeof(msg1), 0);
                                                 send(rival->socket, msg2, sizeof(msg2), 0);
 
