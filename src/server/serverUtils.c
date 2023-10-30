@@ -24,7 +24,7 @@ Player *initializePlayer(int socket)
     Player *newPlayer = (Player *)malloc(sizeof(Player));
     newPlayer->name = (char *)malloc(sizeof(char) * 50);
     newPlayer->socket = socket;
-    newPlayer->status = 2;
+    newPlayer->status = 0;
     newPlayer->game = NULL;
     return newPlayer;
 }

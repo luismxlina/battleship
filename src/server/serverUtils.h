@@ -31,6 +31,7 @@ struct player
                  * */
 
     Game *game;
+    int count;
 };
 
 struct game

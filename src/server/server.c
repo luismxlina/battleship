@@ -21,6 +21,7 @@ int main()
     struct sockaddr_in serverAddr, clientAddr;
     socklen_t addrSize = sizeof(struct sockaddr_in);
     fd_set readfds, auxfds;
+    srand(time(NULL));
 
     char buffer[MSG_SIZE];
     char identifier[MSG_SIZE];
@@ -319,7 +320,7 @@ int main()
 
                                                 bzero(buffer, sizeof(buffer));
                                                 strcpy(buffer, "+Ok. Turno de partida\n");
-                                                send(currentPlayer->socket, buffer, sizeof(buffer), 0);
+                                                send(rival->socket, buffer, sizeof(buffer), 0);
                                             }
                                             else
                                             {
@@ -352,7 +353,7 @@ int main()
                                 else if (playerStatus == 4)
                                 {
                                     Game *game = currentPlayer->game;
-                                    Player *rival = (game->turn % 2 == 0) ? game->player1 : game->player2;
+                                    Player *rival = (game->turn == game->player1->socket) ? game->player2 : game->player1;
                                     if (strcmp(instruction, "DISPARO") == 0)
                                     {
                                         if ((instruction = strtok(NULL, "\0")) != NULL)
@@ -376,17 +377,16 @@ int main()
                                             }
                                             else
                                             {
+                                                currentPlayer->count++;
                                                 int x = (int)(*l - 'A');
                                                 int y = *n;
                                                 int res;
-                                                if (i == currentPlayer->socket)
-                                                {
+
+                                                if (game->player1->socket == i)
                                                     res = makeShot(&game->board2, x, y);
-                                                }
                                                 else
-                                                {
                                                     res = makeShot(&game->board1, x, y);
-                                                }
+
                                                 // Devuelve -1 si las coordenadas están fuera del tablero
                                                 if (res == -1)
                                                 {
@@ -413,21 +413,41 @@ int main()
                                                     bzero(buffer, sizeof(buffer));
                                                     strcpy(buffer, "+Ok. Nuevo tablero");
                                                     char aux[MSG_SIZE];
-                                                    boardToString(&game->board2, aux);
+
+                                                    if (game->player1->socket == i)
+                                                    {
+                                                        boardToString(&game->board2, aux);
+                                                        if (hasPlayerWon(&game->board2))
+                                                        {
+                                                            bzero(buffer, sizeof(buffer));
+                                                            sprintf(buffer, "+Ok. Has ganado la partida en %d disparos\n", game->player1->count);
+                                                            send(i, buffer, sizeof(buffer), 0);
+                                                            bzero(buffer, sizeof(buffer));
+                                                            sprintf(buffer, "+Ok. Has perdido la partida en %d disparos\n", game->player2->count);
+                                                            send(rival->socket, buffer, sizeof(buffer), 0);
+                                                            currentPlayer->status = 2;
+                                                            rival->status = 2;
+                                                            numGames--;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        boardToString(&game->board1, aux);
+                                                        if (hasPlayerWon(&game->board1))
+                                                        {
+                                                            bzero(buffer, sizeof(buffer));
+                                                            sprintf(buffer, "+Ok. Has ganado la partida en %d disparos\n", game->player2->count);
+                                                            send(i, buffer, sizeof(buffer), 0);
+                                                            bzero(buffer, sizeof(buffer));
+                                                            sprintf(buffer, "+Ok. Has perdido la partida en %d disparos\n", game->player1->count);
+                                                            send(rival->socket, buffer, sizeof(buffer), 0);
+                                                            currentPlayer->status = 2;
+                                                            rival->status = 2;
+                                                            numGames--;
+                                                        }
+                                                    }
                                                     strcat(buffer, aux);
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
-                                                    if (hasPlayerWon(&game->board2))
-                                                    {
-                                                        bzero(buffer, sizeof(buffer));
-                                                        strcpy(buffer, "+Ok. Has ganado la partida\n");
-                                                        send(i, buffer, sizeof(buffer), 0);
-                                                        bzero(buffer, sizeof(buffer));
-                                                        strcpy(buffer, "+Ok. Has perdido la partida\n");
-                                                        send(rival->socket, buffer, sizeof(buffer), 0);
-                                                        currentPlayer->status = 2;
-                                                        rival->status = 2;
-                                                        numGames--;
-                                                    }
                                                 }
                                                 // Devuelve 2 si se disparó al agua
                                                 else if (res == 2)
@@ -441,10 +461,18 @@ int main()
                                                     bzero(buffer, sizeof(buffer));
                                                     strcpy(buffer, "+Ok. Nuevo tablero");
                                                     char aux[MSG_SIZE];
-                                                    boardToString(&game->board2, aux);
+
+                                                    if (game->player1->socket == i)
+                                                    {
+                                                        boardToString(&game->board2, aux);
+                                                    }
+                                                    else
+                                                    {
+                                                        boardToString(&game->board1, aux);
+                                                    }
                                                     strcat(buffer, aux);
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
-                                                    game->turn++;
+                                                    game->turn = rival->socket;
                                                     bzero(buffer, sizeof(buffer));
                                                     strcpy(buffer, "+Ok. Turno de partida\n");
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
@@ -460,18 +488,18 @@ int main()
                                     }
                                 }
                                 // Si el cliente introdujo ctrl+c
-                                if (received == 0)
-                                {
-                                    printf("El socket %d, ha introducido ^C\n", i);
-                                    Player *player = getPlayer(players, i);
-                                    if (player->status == 4)
-                                    {
-                                        numGames--;
-                                    }
-                                    // Eliminar ese socket
-                                    exitClient(player, &readfds, &numClients, &players);
-                                }
                             }
+                        }
+                        if (received == 0)
+                        {
+                            printf("El socket %d, ha introducido ^C\n", i);
+                            Player *player = getPlayer(players, i);
+                            if (player->status == 4)
+                            {
+                                numGames--;
+                            }
+                            // Eliminar ese socket
+                            exitClient(player, &readfds, &numClients, &players);
                         }
                     }
                 }

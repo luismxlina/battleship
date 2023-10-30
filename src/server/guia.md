@@ -65,7 +65,7 @@ if (strcmp(instruction, "DISPARO") == 0)
 //             send(i, buffer, sizeof(buffer), 0);
 //             continue;
 //         }
-//         if (game->turn % 2 == 0)
+//         if (game->turn == i)
 //         {
 //             if (shoot(&game->board2, x, y) == true)
 //             {
