@@ -376,25 +376,13 @@ int main()
                                             }
                                             else
                                             {
-                                                /*
-                                                if ((instruction = strtok(NULL, "\0")) != NULL)
-                                                {
-
-                                                    char row[BOARD_SIZE];
-                                                    char column[BOARD_SIZE];
-                                                    *row = strtok(NULL, ",");
-                                                    *column = strtok(NULL, "\0");
-
-                                                    int x = (int)(row[0] - 'A');
-                                                    int y = atoi(column);
-                                                */
                                                 int x = (int)(*l - 'A');
                                                 int y = *n;
                                                 int res;
                                                 if (i == currentPlayer->socket)
                                                 {
                                                     res = makeShot(&game->board2, x, y);
-                                                                                                }
+                                                }
                                                 else
                                                 {
                                                     res = makeShot(&game->board1, x, y);
@@ -461,15 +449,6 @@ int main()
                                                     strcpy(buffer, "+Ok. Turno de partida\n");
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
                                                 }
-                                                /*
-                                                }
-                                                else
-                                                {
-                                                    bzero(buffer, sizeof(buffer));
-                                                    strcpy(buffer, "-Err. Indique las coordenadas\n");
-                                                    send(i, buffer, sizeof(buffer), 0);
-                                                }
-                                                */
                                             }
                                         }
                                     }

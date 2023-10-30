@@ -91,7 +91,6 @@ void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list)
 
 void signalHandler(int signum)
 {
-    printf("\nSe ha recibido la señal sigint\n");
     signal(SIGINT, signalHandler);
 
     // Implementar lo que se desee realizar cuando ocurra la excepción de ctrl+c en el servidor
