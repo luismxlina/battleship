@@ -311,10 +311,11 @@ int main()
                                                 char msg1[MSG_SIZE], msg2[MSG_SIZE];
                                                 strcpy(buffer, "+Ok. Empieza la partida");
                                                 initializeGame(currentPlayer, rival, msg1, msg2);
-                                                strcat(msg1, buffer);
-                                                strcat(msg2, buffer);
-                                                send(currentPlayer->socket, msg1, sizeof(msg1), 0);
-                                                send(rival->socket, msg2, sizeof(msg2), 0);
+                                                char aux[MSG_SIZE] = "+Ok. Empieza la partida";
+                                                strcat(buffer, msg1);
+                                                strcat(aux, msg2);
+                                                send(currentPlayer->socket, buffer, sizeof(buffer), 0);
+                                                send(rival->socket, aux, sizeof(aux), 0);
 
                                                 bzero(buffer, sizeof(buffer));
                                                 strcpy(buffer, "+Ok. Turno de partida\n");
@@ -365,11 +366,13 @@ int main()
                                         {
                                             if ((instruction = strtok(NULL, "\0")) != NULL)
                                             {
-                                                char *row = strtok(NULL, ",");
-                                                char *column = strtok(NULL, "\0");
+                                                char row[BOARD_SIZE];
+                                                char column[BOARD_SIZE];
+                                                *row = strtok(NULL, ",");
+                                                *column = strtok(NULL, "\0");
                                                 int x = (int)(row[0] - 'A');
-                                                int y = atoi(column) - 1;
-                                                int res = makeShot(&game->board1, x, y);
+                                                int y = atoi(column);
+                                                int res = makeShot(&game->board2, x, y);
                                                 // Devuelve -1 si las coordenadas están fuera del tablero
                                                 if (res == -1)
                                                 {
@@ -393,7 +396,13 @@ int main()
                                                     bzero(buffer, sizeof(buffer));
                                                     strcpy(buffer, "+Ok. Tocado rival\n");
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
-                                                    if (hasPlayerWon(&game->board1))
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Nuevo tablero");
+                                                    char aux[MSG_SIZE];
+                                                    boardToString(&game->board2, aux);
+                                                    strcat(buffer, aux);
+                                                    send(rival->socket, buffer, sizeof(buffer), 0);
+                                                    if (hasPlayerWon(&game->board2))
                                                     {
                                                         bzero(buffer, sizeof(buffer));
                                                         strcpy(buffer, "+Ok. Has ganado la partida\n");
@@ -414,6 +423,12 @@ int main()
                                                     send(i, buffer, sizeof(buffer), 0);
                                                     bzero(buffer, sizeof(buffer));
                                                     strcpy(buffer, "+Ok. Agua rival\n");
+                                                    send(rival->socket, buffer, sizeof(buffer), 0);
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Nuevo tablero");
+                                                    char aux[MSG_SIZE];
+                                                    boardToString(&game->board2, aux);
+                                                    strcat(buffer, aux);
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
                                                 }
                                             }

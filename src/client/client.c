@@ -21,7 +21,7 @@ int main()
     struct sockaddr_in sockname;
     char buffer[1000];
     char aux[1000];
-    Board *board = NULL;
+    Board *board = (Board *)malloc(sizeof(Board));
     socklen_t len_sockname;
     fd_set readfds, auxfds;
     int salida;
@@ -78,20 +78,14 @@ int main()
             if (strstr(buffer, "+Ok. Empieza la partida") != NULL)
             {
                 strcpy(aux,buffer+23);
-                printf("%s\n", aux);
                 stringToBoard(board, aux);
-                for (int i = 0; i < BOARD_SIZE; i++)
-                {
-                    for (int j = 0; j < BOARD_SIZE; j++)
-                    {
-                        printf("%c ", board->grid[i][j]);
-                    }
-                }
                 printBoard(board);
             }
-            else if (strstr(buffer, "+Ok. Nuevo tablero.") != NULL)
+            else if (strstr(buffer, "+Ok. Nuevo tablero") != NULL)
             {
-                stringToBoard(board, buffer+20);
+                
+                strcpy(aux,buffer+18);
+                stringToBoard(board, aux);
                 printBoard(board);
                 printf("+Ok. Nuevo tablero.\n");
             }
