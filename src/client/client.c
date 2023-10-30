@@ -77,26 +77,33 @@ int main()
             recv(sd, buffer, sizeof(buffer), 0);
             if (strstr(buffer, "+Ok. Empieza la partida") != NULL)
             {
-                strcpy(aux,buffer+23);
+                printf("+Ok. Empieza la partida.\n");
+                strcpy(aux, buffer + 23);
                 stringToBoard(board, aux);
                 printBoard(board);
             }
             else if (strstr(buffer, "+Ok. Nuevo tablero") != NULL)
             {
-                
-                strcpy(aux,buffer+18);
+
+                printf("+Ok. Nuevo tablero.\n");
+                strcpy(aux, buffer + 18);
                 stringToBoard(board, aux);
                 printBoard(board);
-                printf("+Ok. Nuevo tablero.\n");
             }
             else
             {
                 printf("%s\n", buffer);
             }
             if (strcmp(buffer, "-Err. Demasiados usuarios conectados\n") == 0)
+            {
+                printf("-Err. Demasiados usuarios conectados. Inténtelo más tarde.\n");
                 end = 1;
+            }
             if (strcmp(buffer, "+Ok. Desconexión procesada.\n") == 0)
+            {
+                printf("+Ok. Desconexión procesada.\n");
                 end = 1;
+            }
         }
         else
         {

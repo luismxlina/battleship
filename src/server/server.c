@@ -319,7 +319,7 @@ int main()
 
                                                 bzero(buffer, sizeof(buffer));
                                                 strcpy(buffer, "+Ok. Turno de partida\n");
-                                                send(rival->socket, buffer, sizeof(buffer), 0);
+                                                send(currentPlayer->socket, buffer, sizeof(buffer), 0);
                                             }
                                             else
                                             {
@@ -353,26 +353,52 @@ int main()
                                 {
                                     Game *game = currentPlayer->game;
                                     Player *rival = (game->turn % 2 == 0) ? game->player1 : game->player2;
-
                                     if (strcmp(instruction, "DISPARO") == 0)
                                     {
-                                        if (currentPlayer->socket == rival->socket)
+                                        if ((instruction = strtok(NULL, "\0")) != NULL)
                                         {
-                                            bzero(buffer, sizeof(buffer));
-                                            strcpy(buffer, "-Err. Debe esperar su turno\n");
-                                            send(i, buffer, sizeof(buffer), 0);
-                                        }
-                                        else
-                                        {
-                                            if ((instruction = strtok(NULL, "\0")) != NULL)
+                                            int *n = (int *)malloc(sizeof(int));
+                                            char *l = (char *)malloc(sizeof(char));
+                                            splitShoot(instruction, l, n);
+
+                                            if (*n == -1 || (strcmp(l, "Z") == 0))
                                             {
-                                                char row[BOARD_SIZE];
-                                                char column[BOARD_SIZE];
-                                                *row = strtok(NULL, ",");
-                                                *column = strtok(NULL, "\0");
-                                                int x = (int)(row[0] - 'A');
-                                                int y = atoi(column);
-                                                int res = makeShot(&game->board2, x, y);
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "+Ok. Instrucción no válida\n");
+                                                printf("%s", buffer);
+                                            }
+
+                                            if (currentPlayer->socket == rival->socket)
+                                            {
+                                                bzero(buffer, sizeof(buffer));
+                                                strcpy(buffer, "-Err. Debe esperar su turno\n");
+                                                send(i, buffer, sizeof(buffer), 0);
+                                            }
+                                            else
+                                            {
+                                                /*
+                                                if ((instruction = strtok(NULL, "\0")) != NULL)
+                                                {
+
+                                                    char row[BOARD_SIZE];
+                                                    char column[BOARD_SIZE];
+                                                    *row = strtok(NULL, ",");
+                                                    *column = strtok(NULL, "\0");
+
+                                                    int x = (int)(row[0] - 'A');
+                                                    int y = atoi(column);
+                                                */
+                                                int x = (int)(*l - 'A');
+                                                int y = *n;
+                                                int res;
+                                                if (i == currentPlayer->socket)
+                                                {
+                                                    res = makeShot(&game->board2, x, y);
+                                                                                                }
+                                                else
+                                                {
+                                                    res = makeShot(&game->board1, x, y);
+                                                }
                                                 // Devuelve -1 si las coordenadas están fuera del tablero
                                                 if (res == -1)
                                                 {
@@ -430,13 +456,20 @@ int main()
                                                     boardToString(&game->board2, aux);
                                                     strcat(buffer, aux);
                                                     send(rival->socket, buffer, sizeof(buffer), 0);
+                                                    game->turn++;
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "+Ok. Turno de partida\n");
+                                                    send(rival->socket, buffer, sizeof(buffer), 0);
                                                 }
-                                            }
-                                            else
-                                            {
-                                                bzero(buffer, sizeof(buffer));
-                                                strcpy(buffer, "-Err. Indique las coordenadas\n");
-                                                send(i, buffer, sizeof(buffer), 0);
+                                                /*
+                                                }
+                                                else
+                                                {
+                                                    bzero(buffer, sizeof(buffer));
+                                                    strcpy(buffer, "-Err. Indique las coordenadas\n");
+                                                    send(i, buffer, sizeof(buffer), 0);
+                                                }
+                                                */
                                             }
                                         }
                                     }

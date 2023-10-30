@@ -24,12 +24,12 @@ int makeShot(Board *opponentBoard, int x, int y)
     if (opponentBoard->grid[y][x] == SHIP)
     {
         opponentBoard->grid[y][x] = HIT; // Marcamos como un acierto
-        return 1;                     // Devuelve 1 si se acertó un barco
+        return 1;                        // Devuelve 1 si se acertó un barco
     }
     else
     {
         opponentBoard->grid[y][x] = MISS; // Marcamos como un fallo
-        return 2;                     // Devuelve 2 si se disparó al agua
+        return 2;                         // Devuelve 2 si se disparó al agua
     }
 }
 
@@ -53,11 +53,8 @@ bool hasPlayerWon(Board *opponentBoard)
 void initializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
 {
     Game *game = (Game *)malloc(sizeof(Game)); // Se crea la estructura del juego
-    generateBoard(&game->board1);             // Se genera el tablero del jugador 1 (el que inicia)
-    generateBoard(&game->board2);            // Se genera el tablero del jugador 2 (el que responde)
-
-    printBoard(&game->board1); // Se imprime el tablero del jugador 1 (el que inicia)
-    printBoard(&game->board2); // Se imprime el tablero del jugador 2 (el que responde)
+    generateBoard(&game->board1);              // Se genera el tablero del jugador 1 (el que inicia)
+    generateBoard(&game->board2);              // Se genera el tablero del jugador 2 (el que responde)
 
     bzero(msg1, sizeof(msg1));
     bzero(msg2, sizeof(msg2));
@@ -65,10 +62,7 @@ void initializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
     boardToString(&game->board1, msg1); // Se convierte el tablero del jugador 1 a una cadena
     boardToString(&game->board2, msg2); // Se convierte el tablero del jugador 2 a una cadena
 
-    printf("msg1: %s\n", msg1);
-    printf("msg2: %s\n", msg2);
-
-    player1->status = 4; // Se cambia el estado del jugador 1 a jugando
+    player1->status = 4;  // Se cambia el estado del jugador 1 a jugando
     player1->game = game; // Se asigna el juego al jugador 1
 
     player2->status = 4;

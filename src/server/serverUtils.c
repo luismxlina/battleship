@@ -12,13 +12,19 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+void splitShoot(const char *cadena, char *L, int *N)
+{
+    // Asegurarse de que la cadena tiene el formato correcto "DISPARO L,N"
+    sscanf(cadena, "%c,%d", L, N);
+}
+
 // Función para inicializar un nuevo cliente
 Player *initializePlayer(int socket)
 {
     Player *newPlayer = (Player *)malloc(sizeof(Player));
     newPlayer->name = (char *)malloc(sizeof(char) * 50);
     newPlayer->socket = socket;
-    newPlayer->status = 0;
+    newPlayer->status = 2;
     newPlayer->game = NULL;
     return newPlayer;
 }

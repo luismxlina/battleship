@@ -52,4 +52,5 @@ Player *initializePlayer(int socket);
 void exitClient(Player *player, fd_set *readfds, int *numClientes, List **list);
 void signalHandler(int signum);
 char *readfile(const char *nombreArchivo);
+void splitShoot(const char *cadena, char *L, int *N);
 #endif
