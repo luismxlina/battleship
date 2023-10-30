@@ -68,7 +68,10 @@ void initializeGame(Player *player1, Player *player2, char *msg1, char *msg2)
     player2->status = 4;
     player2->game = game;
 
+    player1->count = 0;
+    player2->count = 0;
+
     game->player1 = player1;
     game->player2 = player2;
-    game->turn = 1;
+    game->turn = player2->socket;
 }
