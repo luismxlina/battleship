@@ -77,13 +77,3 @@ El servidor se iniciará y esperará conexiones de clientes en el puerto especif
    ```
 
 El cliente se conectará al servidor y te permitirá interactuar con él a través de comandos de texto.
-
-## Contribuyendo
-
-Si deseas contribuir a este proyecto, puedes hacerlo creando bifurcaciones (forks) y enviando solicitudes de extracción (pull requests) con mejoras o correcciones.
-
-## Licencia
-
-Este programa se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más información.
-
-¡Diviértete jugando batalla naval con tus amigos en este servidor cliente-servidor!
